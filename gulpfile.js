@@ -91,13 +91,12 @@ gulp.task('watch', function() {
 
 
 });
-/*
 gulp.task('connect', function() {
     connect.server({
         root: outputDir,
         livereload: true
     });
     gutil.log("Hej fra connect");
-});*/
+});
 
 gulp.task('default', ['js', 'html', 'css', 'lint', 'log', 'watch']);
