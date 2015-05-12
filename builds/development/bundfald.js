@@ -2,10 +2,10 @@ var playing = false;
 var mousedown = false;
 
 var video_Array = ["media/1.mp4", "media/2.mp4", "media/6.mp4"];
-var pic_Array = ["Agplus.jpg", "Cu2plus.jpg", "Kplus.jpg", "Nh4plus.jpg", "Ba2plus.jpg", "Fe2plus.jpg", "Mg2plus.jpg", "Pb2plus.jpg", "Ca2plus.jpg", "Fe3plus.jpg", "Naplus.jpg", "Zn2plus.jpg"];
+var pic_Array = ["Nh4plus.jpg", "Naplus.jpg", "Kplus.jpg", "Mg2plus.jpg", "Zn2plus.jpg", "Cu2plus.jpg", "Fe2plus.jpg", "Fe3plus.jpg", "Ca2plus.jpg", "Ba2plus.jpg", "Pb2plus.jpg", "Agplus.jpg"];
 
-var negative_ioner = ["NO3-", "Cl-", "Br-", "I-", "SO4-", "CO32-", "OH-", "S2-", "PO43-"];
-var positive_ioner = ["NH4+", "Na+", "K+", "Mg2+", "Zn2+", "CU2+", "Fe2+", "Fe3+", "Ca2+", "Ba2+", "Pb2+", "Ag+"];
+var negative_ioner = ["NO_$3_€-", "Cl_€-", "Br_€-", "I_€-", "SO_$4_€2-", "CO_$3_€2-", "OH_€-", "S_€2-", "PO_$4_€3-"];
+var positive_ioner = ["NH_$4_€+", "Na_€+", "K_€+", "Mg_€2+", "Zn_€2+", "Cu_€2+", "Fe_€2+", "Fe_€3+", "Ca_€2+", "Ba_€2+", "Pb_€2+", "Ag_€+"];
 
 var myLoader = html5Preloader();
 
@@ -20,27 +20,33 @@ $(document).ready(function() {
     //EVENT listeners: 
 
     $(".btn_neg").click(function() {
+    	convert_tosup("NO_$3_€-");
 
-        $(".btn_neg").removeClass("selected");
+        $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
+
         $("#video").fadeIn(200);
         video.currentTime = 0;
         video.play();
-        $(this).addClass("selected");
+        $(this).addClass("btn-primary").removeClass("btn-info");
         var num = parseInt($(this).attr("neg_id"));
-         $(".neg_stof").html(negative_ioner[num])
+        $(".neg_stof").html(negative_ioner[num])
 
     });
 
     $(".btn_pos").click(function() {
 
-        $(".btn_pos").removeClass("selected");
+        $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
         $("#video").fadeOut(0);
-        $(this).addClass("selected");
-
+        $(this).addClass("btn-primary").removeClass("btn-info");
+        video.currentTime = 0;
+        video.pause();
 
         var num = parseInt($(this).attr("pos_id"));
+        $(".img_container").fadeOut(50, function() {
+            $(".img_container").attr("src", "media/img/" + pic_Array[num]);
 
-        $(".img_container").attr("src", "media/img/" + pic_Array[num]);
+            $(".img_container").fadeIn(200);
+        });
         $(".pos_stof").html(positive_ioner[num])
     });
 
@@ -85,8 +91,8 @@ function populate_btns() {
 
 // Video control options: 
 
-/*
-$(".videoplayer").click(function() {
+
+$(".scrubzone").click(function() {
     if (playing === false) {
         video.play();
         playing = true;
@@ -108,11 +114,11 @@ $(document).mousedown(function() {
 
 $(document).mouseup(function() {
     mousedown = false;
-    video.play();
+    //video.play();
 });
 
 
-$(".videoplayer").mousemove(function(e) {
+$(".scrubzone").mousemove(function(e) {
     if (mousedown == true) {
         video.pause();
         divPos = {
@@ -123,4 +129,20 @@ $(".videoplayer").mousemove(function(e) {
     }
 });
 
-**/
+function convert_tosup(string) {
+    var n = str.search(_$);
+    alert(n);
+
+    return newstring;
+}
+
+// Scrubber event listener: 
+
+setInterval(function() {
+    var percent = video.currentTime / video.duration;
+
+    var scrub_pos = percent * video.width;
+
+    video.duration
+    $(".scrubber").css("left", scrub_pos + "px");
+}, 50);
