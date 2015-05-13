@@ -68,3 +68,8 @@
 .scrub_container{
 	color: blue;
 }
+
+sup,sub {
+    margin-left: 1px;
+    font-size: 70%;
+}
