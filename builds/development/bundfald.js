@@ -65,8 +65,8 @@ $(document).ready(function() {
 
             //alert("vi skal afspille film nummer: "  + matrix_Array[neg_selected][pos_selected]);
             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
-            $("source").attr("src", "media/" + matrix_Array[neg_selected][pos_selected] + ".mp4");
-            $("#video").load();
+            //$("source").attr("src", "media/" + matrix_Array[neg_selected][pos_selected] + ".mp4");
+            //$("#video").load();
             $("#video").fadeIn(200);
             video.currentTime = 0;
             video.play();
