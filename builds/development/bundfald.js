@@ -10,7 +10,19 @@ var pic_Array = ["Nh4plus.jpg", "Naplus.jpg", "Kplus.jpg", "Mg2plus.jpg", "Zn2pl
 var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup", "Br<sup>-</sup", "I<sup>-</sup", "SO<sub>4</sub><sup>2-</sup", "CO<sub>3</sub><sup>2-</sup", "OH<sup>-</sup", "S<sup>2-</sup", "PO<sub>4</sub><sup>3-</sup"];
 var positive_ioner = ["NH<sub>4</sub><sup>+</sup>", "Na<sup>+</sup", "K<sup>+</sup", "Mg<sup>2+</sup", "Zn<sup>2+</sup", "Cu<sup>2+</sup", "Fe<sup>2+</sup", "Fe<sup>3+</sup", "Ca<sup>2+</sup", "Ba<sup>2+</sup", "Pb<sup>2+</sup", "Ag<sup>+</sup"];
 
+var film_Array = ["1","2","6","8","24"];
+
 var myLoader = html5Preloader();
+
+var c_width = $(".container-fluid").width();
+var scrubber = $(".scrubber");
+
+var dragging = false;
+
+var videoloaded = false;
+
+var divPos = {};
+var offset = $("#video").offset();
 
 var matrix_Array = [
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
@@ -30,7 +42,22 @@ var matrix_Array = [
 $(document).ready(function() {
     populate_btns();
     //load_videos(0);
-    $("#video").fadeOut(0);
+    $(".vid_container").hide();
+    $(".scrub_container").hide();
+    $(".loader").hide();
+    scrubber.draggable({
+        drag: function(event, ui) {
+            dragging = true;
+            video.pause();
+        },
+        stop: function(event, ui) {
+            dragging = false;
+            video.play();
+        },
+        axis: "x",
+        containment: "parent"
+
+    });
 
     //EVENT listeners: 
 
@@ -46,33 +73,58 @@ $(document).ready(function() {
 
         pos_selected = parseInt($(this).attr("pos_id"));
         console.log("pos: " + pos_selected);
-        $(".img_container").fadeOut(50, function() {
+        $(".img_container").fadeOut(0, function() {
             $(".img_container").attr("src", "media/img/" + pic_Array[pos_selected]);
 
-            $(".img_container").fadeIn(200);
+            $(".img_container").fadeIn(0);
         });
         $(".pos_stof").html(positive_ioner[pos_selected])
     });
 
     $(".btn_neg").click(function() {
+        $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
+
         if (pos_selected === false) {
             alert("vælg en positiv ion først");
         } else {
             $(this).addClass("btn-primary").removeClass("btn-info");
             neg_selected = parseInt($(this).attr("neg_id"));
             console.log("selected ")
-            $(".neg_stof").html(negative_ioner[neg_selected])
+            $(".neg_stof").html(negative_ioner[neg_selected]);
+
+            var rand_film = Math.floor(Math.random()* film_Array.length);
+            alert (rand_film)
+
+            $(".vid_container").html("<video id='video' class='videoplayer'><source src='media/vid/" + film_Array[rand_film] +".mp4' autoplay ='true' type='video/mp4'></video>");
 
             //alert("vi skal afspille film nummer: "  + matrix_Array[neg_selected][pos_selected]);
-            $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
             //$("source").attr("src", "media/" + matrix_Array[neg_selected][pos_selected] + ".mp4");
             //$("#video").load();
-            $("#video").fadeIn(200);
-            video.currentTime = 0;
-            video.play();
+            $(".img_container").hide();
+            $(".vid_container").show();
+
+            videoloaded = false;
+            $(".loader").show();
+            video.addEventListener("canplaythrough", loadSuccess);
+
         }
     });
+
+
 });
+
+function loadSuccess() {
+    if (videoloaded == false) {
+        videoloaded = true;
+        $(".loader").hide();
+        $("#video").show();
+        console.log(video);
+        video.currentTime = 0;
+        video.play();
+
+        $(".scrub_container").show();
+    }
+};
 
 //
 
@@ -102,11 +154,11 @@ function load_videos(num) {
 function populate_btns() {
 
     for (var i = 0; i < negative_ioner.length; i++) {
-        $(".negativ_container").append("<div class='btn btn-lg btn-info btn_neg' neg_id='" + i + "''>" + negative_ioner[i] + "</div>");
+        $(".negativ_container").append("<div class='btn btn-info btn_neg' neg_id='" + i + "''>" + negative_ioner[i] + "</div>");
     }
 
     for (var i = 0; i < positive_ioner.length; i++) {
-        $(".positiv_container").append("<div class='btn btn-lg btn-info btn_pos' pos_id='" + i + "''>" + positive_ioner[i] + "</div>");
+        $(".positiv_container").append("<div class='btn  btn-info btn_pos' pos_id='" + i + "''>" + positive_ioner[i] + "</div>");
     }
 }
 
@@ -115,55 +167,59 @@ function populate_btns() {
 // Video control options: 
 
 
-$(".scrubzone").click(function() {
-    if (playing === false) {
-        video.play();
-        playing = true;
-    } else {
+
+/*
+$(".scrubzone").mousedown(function(e) {
+    console.log("clicked zone");
+     var percent = video.currentTime / video.duration;
+        var scrub_pos = percent * c_width;
+        scrubber.css("left", scrub_pos + "px");
+    dragging = true;
+    divPos = {
+        left: e.pageX - offset.left
+    };
+    video.pause();
+});
+
+
+
+
+$(".scrubzone").mouseup(function() {
+    dragging = false;
+    video.play();
+});
+
+*/
+$(document).mousemove(function(e) {
+    /*if (mousedown == true) {
         video.pause();
-        playing = false;
-    }
-    console.log("virker det? JA DET GØR! MÅSKE?");
-});
-
-var divPos = {};
-var offset = $("#video").offset();
-
-$(document).mousedown(function() {
-    mousedown = true;
-    //video.pause();
-});
-
-
-$(document).mouseup(function() {
-    mousedown = false;
-    //video.play();
-});
-
-
-$(".scrubzone").mousemove(function(e) {
-    if (mousedown == true) {
-        video.pause();
-        divPos = {
-            left: e.pageX - offset.left
-        };
+      
         var playpos = video.duration * (divPos.left / video.width);
-        video.currentTime = playpos;
-    }
+        $("#video").currentTime = playpos;
+        scrubber.css("margin-left", playpos + "px")
+    }*/
+
+    divPos = {
+        left: e.pageX - offset.left
+    };
 });
 
-function convert_tosup(string) {
-
-    //return newstring;
-}
 
 // Scrubber event listener: 
 
 setInterval(function() {
-    var percent = video.currentTime / video.duration;
+    if (dragging == false) {
+        var percent = video.currentTime / video.duration;
+        var scrub_pos = percent * c_width;
 
-    var scrub_pos = percent * video.width;
+        if (scrub_pos < c_width - 60) {
+            scrubber.css("left", scrub_pos + "px");
 
-    video.duration
-    $(".scrubber").css("left", scrub_pos + "px");
-}, 50);
+        }
+    } else {
+        var playpos = video.duration * (divPos.left / c_width);
+        console.log("playpos" + playpos);
+        video.currentTime = playpos;
+        //scrubber.css("margin-left", playpos + "px")
+    }
+}, 10);

@@ -1,14 +1,14 @@
 
 .positiv_container {
     float: left;
-    margin-left: 5%;
-    width: 20%;
+    margin-left: 2%;
+    width: 30%;
 }
 .stof_container {
     color: white;
     float: left;
     text-align: center;
-    width: 50%;
+    width: 38%;
 }
 .pos_stof {
     float: left;
@@ -22,43 +22,47 @@
 }
 .negativ_container {
     float: left;
-    width: 20%;
+    width: 30%;
 }
 .front_container {
-    height: 100%;
-    margin-top: 5%;
+
     z-index: 1;
+    position: absolute;
 }
 .videoplayer {
-    background-color: blue;
+    background-color: black;
 }
 .img_container {
 }
 .btn {
-    margin: 8px;
-    width: 42%;
+    margin: 4px;
+    width: 50px;
 }
 .media_container {
-    background-color: black;
-    margin-top: -5%;
-    position: absolute;
-    z-index: -1;
+
+}
+
+.scrub_container{
+    width:100%;
 }
 .scrubzone {
     background-color: lightblue;
-    bottom: 30px;
-    height: 40px;
+    bottom: 15px;
+    height: 20px;
     opacity: 0.4;
     position: absolute;
     width: 100%;
 }
 .scrubber {
+
+    border-radius: 4px;
     background-color: #ddd;
-    bottom: 10px;
-    height: 80px;
+    bottom: 5px;
+    height: 40px;
     position: absolute;
-    width: 30px;
-}
+    width: 60px;
+    opacity: .7;
+    }
 .ladnings_indikator {
     color: white;
     font-size: 48px;
@@ -67,6 +71,12 @@
 
 .scrub_container{
 	color: blue;
+}
+
+.loader{
+    left:20%;
+    top:0%;
+    position:fixed;
 }
 
 sup,sub {
