@@ -42,7 +42,7 @@ htmlSources = [
     outputDir + '*.html'
 ];
 
-cssSources = [outputDir + '*.css'];
+cssSources = [outputDir + '/css/*.css'];
 
 
 gulp.task('log', function() {

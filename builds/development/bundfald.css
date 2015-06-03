@@ -1,85 +1,158 @@
-
 .positiv_container {
     float: left;
     margin-left: 2%;
     width: 30%;
 }
-.stof_container {
-    color: white;
-    float: left;
-    text-align: center;
-    width: 38%;
-}
+
 .pos_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
+
 .neg_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
+
 .negativ_container {
-    float: left;
+    float: right;
+    margin-right: 2%;
     width: 30%;
 }
-.front_container {
 
-    z-index: 1;
+.front_container {
     position: absolute;
+    z-index: 1;
 }
+
 .videoplayer {
     background-color: black;
 }
-.img_container {
+
+.inner_container {
+    background-color: #333;
 }
+
 .btn {
     margin: 4px;
-    width: 50px;
-}
-.media_container {
-
+    width: 70px;
 }
 
-.scrub_container{
-    width:100%;
+.media_container {}
+
+.scrub_container {
+    width: 100%;
 }
+
 .scrubzone {
-    background-color: lightblue;
+    background-color: #1784ae;
     bottom: 15px;
-    height: 20px;
+    height: 12px;
     opacity: 0.4;
     position: absolute;
     width: 100%;
+    cursor: pointer;
 }
-.scrubber {
 
+.scrubber {
+    background-color: #d0cec6;
     border-radius: 4px;
-    background-color: #ddd;
     bottom: 5px;
-    height: 40px;
+    cursor: pointer;
+    height: 35px;
+    opacity: 1;
     position: absolute;
-    width: 60px;
-    opacity: .7;
-    }
+    width: 40px;
+}
+
 .ladnings_indikator {
     color: white;
-    font-size: 48px;
-    text-align: center;
 }
 
-.scrub_container{
-	color: blue;
+.scrub_container {
+    color: blue;
 }
 
-.loader{
-    left:20%;
-    top:0%;
-    position:fixed;
+.loader {
+    left: 50%;
+    position: absolute;
+    top: 50%;
 }
 
-sup,sub {
-    margin-left: 1px;
+sup,
+sub {
     font-size: 70%;
+    margin-left: 1px;
+}
+
+.formel_container {
+    clear: both;
+    color: white;
+    margin-top: 35%;
+    width: 100%;
+}
+
+.pil_container {
+    color: white;
+    float: left;
+    font-size: 2.5em;
+    margin-left: 7%;
+    margin-right: 5%;
+    margin-top: 12px;
+    text-align: center;
+    text-shadow: 1px 1px 0 #1784ae;
+    width: 10%;
+}
+
+.CapitalI {
+    font-family: "Georgia";
+    font-weight: 100;
+}
+
+.small_l {
+    font-family: "Georgia";
+    font-weight: 100;
+}
+
+.reaktions_container {
+    float: left;
+    margin-right: -12px;
+    text-align: right;
+    width: 41%;
+}
+
+.resultat_container {
+    float: left;
+    margin-left: 1%;
+    text-align: left;
+    width: 37%;
+}
+
+.bund_select {
+    color: white;
+    background-color: black;
+    border: 1px solid #eee;
+    font-size: 25px;
+    margin-right: 7px;
+}
+
+.select_wrapper_reaktion {
+    margin-top: -20px;
+}
+
+.radio_text {
+    margin-left: 20px;
+    display: inline;
+}
+
+.img_tabel_bundfald {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.tabel_toggle {
+    position: relative;
 }
