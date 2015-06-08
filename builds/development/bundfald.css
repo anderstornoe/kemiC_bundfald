@@ -150,9 +150,10 @@ sub {
 .img_tabel_bundfald {
     position: absolute;
     z-index: 5;
-    pointer-events: none;
+    cursor:pointer;
 }
 
 .tabel_toggle {
     position: relative;
+    width:auto;
 }

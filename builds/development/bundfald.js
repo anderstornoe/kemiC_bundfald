@@ -7,8 +7,8 @@ var neg_selected = false;
 
 var pic_Array = ["Nh4plus.jpg", "Naplus.jpg", "Kplus.jpg", "Mg2plus.jpg", "Zn2plus.jpg", "Cu2plus.jpg", "Fe2plus.jpg", "Fe3plus.jpg", "Ca2plus.jpg", "Ba2plus.jpg", "Pb2plus.jpg", "Agplus.jpg"];
 
-var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup>", "Br<sup>-</sup>", "I<sup>-</sup>", "SO<sub>4</sub><sup>2-</sup", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
-var positive_ioner = ["NH<sub>4</sub><sup>+</sup>", "Na<sup>+</sup", "K<sup>+</sup", "Mg<sup>2+</sup", "Zn<sup>2+</sup", "Cu<sup>2+</sup", "Fe<sup>2+</sup", "Fe<sup>3+</sup", "Ca<sup>2+</sup", "Ba<sup>2+</sup", "Pb<sup>2+</sup", "Ag<sup>+</sup"];
+var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup>", "Br<sup>-</sup>", "I<sup>-</sup>", "SO<sub>4</sub><sup>2-</sup>", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
+var positive_ioner = ["NH<sub>4</sub><sup>+</sup>", "Na<sup>+</sup>", "K<sup>+</sup>", "Mg<sup>2+</sup>", "Zn<sup>2+</sup>", "Cu<sup>2+</sup>", "Fe<sup>2+</sup>", "Fe<sup>3+</sup>", "Ca<sup>2+</sup>", "Ba<sup>2+</sup>", "Pb<sup>2+</sup>", "Ag<sup>+</sup>"];
 
 //var myLoader = html5Preloader();
 
@@ -26,6 +26,10 @@ var divPos = {};
 var offset = $("#video").offset();
 
 var opgavetype;
+var underopgave;
+
+var opg_pos;
+var opg_neg;
 
 var matrix_Array = [
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
@@ -74,18 +78,16 @@ $(document).ready(function() {
 
     $(".tabel_toggle").click(function() {
 
-        $(".img_tabel_bundfald").slideToggle(100);
-        if ($(this).attr("value") == "hide") {
-            $(this).attr("value", "show");
-            $(this).html("Skjul");
-        } else {
-            $(this).attr("value", "hide");
-            $(this).html("Se tabel");
-        }
-
+        $(".img_tabel_bundfald").fadeIn(100);
+    
 
     });
 
+    $(".img_tabel_bundfald").click(function() {
+
+        $(this).fadeOut(100);
+
+    });
 
     $(".btn_pos").click(function() {
         //UserMsgBox(".container-fluid", "Hurra - korrekt svar!");
@@ -108,10 +110,13 @@ $(document).ready(function() {
 
         //Hvis det er en øve opgave: 
         if (opgavetype == 1) {
-            if (pos_selected != opgaveformulerings_Array[runde][1]) {
+            if (pos_selected != opg_pos) {
                 UserMsgBox(".inner_container", "Du har ikke valgt den rigtige positive ion");
                 pos_selected = false;
                 $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
+            } else {
+                UserMsgBox(".inner_container", "Vælg nu en negativ ion.");
+
             }
         }
 
@@ -154,13 +159,18 @@ $(document).ready(function() {
 
             } else if (opgavetype == 1) {
 
+                var korrekt = 0;
+
+
+
                 // Tjek om der er    if (opgavetype == 1) {
-                if (neg_selected != opgaveformulerings_Array[runde][0]) {
+                if (neg_selected != opg_neg) {
                     UserMsgBox(".inner_container", "Du har ikke valgt den rigtige negative ion");
                     neg_selected = false;
                     $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                 } else {
-                    UserMsgBox(".inner_container", "Du har valgt den rigtige negative ion. <br/>Afstem reaktionen herunder");
+                    UserMsgBox(".inner_container", "Du har valgt de rigtige ioner. <br/>Afstem reaktionen herunder");
+                    $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)")
                     var correctkoeff_1 = "1";
                     var correctkoeff_2 = "1";
                     var reak_string = reaktions_Array[pos_selected][neg_selected][0];
@@ -178,6 +188,8 @@ $(document).ready(function() {
                     reak_string = "<span class=select_wrapper_1><select class='koeff_1 bund_select'><option value='?'>?</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option></select></span>" + reak_string;
 
                     // Tjek det ANDET led af reaktionen:
+
+                    console.log(svar_Array);
                     var koeff2 = reak_string.indexOf("(aq)") + 7;
                     console.log("koeff2: " + reak_string[koeff2])
 
@@ -195,14 +207,15 @@ $(document).ready(function() {
 
                     reak_string = reak_string.slice(0, koeff2) + "<span class=select_wrapper_2><select class='koeff_2 bund_select'><option value='?'>?</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option></select></span>" + reak_string.slice(koeff2);
 
-                    console.log("orig: " + reak_string);
-                    //console.log("NY reak" + ny_reak);
+
 
                     $(".reaktions_container").html(reak_string);
 
                     /// Generer svar_muligheder i reaktionsscontaineren: 
 
-                    var resultat_interaktion = "<div class='select_wrapper_reaktion'><form><input type='radio' name='reaktion' value='1'><div class='radio_text'>Intet bundfald</div><br/><input type='radio' name='reaktion' value='2'><div class='radio_text'>" + reaktions_Array[pos_selected][neg_selected][1] + "</div></form></div><input type='radio' name='reaktion' value='3'><div class='radio_text'>" + reaktions_Array[pos_selected][neg_selected][1] + "</div></form></div>";
+
+
+                    var resultat_interaktion = "<div class='select_wrapper_reaktion'><form id='reak_form' class='bund_select'><input class='radio_btn' type='radio' name='reaktion' value='1'><div class='radio_text'>" + reaktions_Array[opg_pos][opg_neg][1] + "</div><br/><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][0] + "</div><br/><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][1] + "</div><br/><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][2] + "</div><br/>";
 
 
                     $(".resultat_container").html(resultat_interaktion); //reaktions_Array[pos_selected][neg_selected][1]);
@@ -213,12 +226,17 @@ $(document).ready(function() {
                     //// 
 
                     $(".formel_container").fadeIn(300);
+
                     $(".bund_select").change(function() {
+                        console.log("change");
                         var svar_1 = $(".koeff_1").val();
                         var svar_2 = $(".koeff_2").val();
-                        // alert (typeof(correctkoeff_1));
-                        console.log("svar_1: " + svar_1, "korrekt_1: " + correctkoeff_1 + "svar_2: " + svar_2, "korrekt_2: " + correctkoeff_2);
+                        var svar_3 = $('input[name=reaktion]:checked', '#reak_form').val()
+                            // alert (typeof(correctkoeff_1));
+                        console.log("korrekt: " + korrekt);
+                        console.log("svar_3: " + svar_3 + "svar_1: " + svar_1, "korrekt_1: " + correctkoeff_1 + "svar_2: " + svar_2, "korrekt_2: " + correctkoeff_2);
                         if (svar_1 == correctkoeff_1) {
+                            korrekt++;
                             console.log("Korrekt_svar1");
                             $(".select_wrapper_1").html(correctkoeff_1);
 
@@ -227,8 +245,9 @@ $(document).ready(function() {
                                 $(".select_wrapper_1").fadeOut(2000);
                             }
                         }
-
+                        console.log("korrekt: " + korrekt);
                         if (svar_2 == correctkoeff_2) {
+                            korrekt++;
                             $(".select_wrapper_2").html(correctkoeff_2);
 
                             if (correctkoeff_2 == "1") {
@@ -236,6 +255,32 @@ $(document).ready(function() {
 
                             }
                         }
+                        console.log("korrekt: " + korrekt);
+                        if (svar_3 == "1") {
+                            korrekt++;
+                            $(".0_rdio").remove();
+                            $(".radio_btn").each(function(index) {
+                                if ($(this).attr("value") == "0") {
+
+                                    $(this).remove();
+                                    //$(this).find(".radio_text").hide();
+
+                                }
+                                console.log(index + ": " + $(this).text());
+                            });
+                        }
+
+                        if (korrekt == 3) {
+                            UserMsgBox(".inner_container", "Du har afstemt reaktionsskemaet korrekt. Klik for at gå videre!");
+                            $(".formel_container").fadeOut("slow", function() {
+                                //$(".formel_container").html("");
+                                poseQuestion();
+                            });
+
+
+                        }
+
+                        console.log("korrekt: " + korrekt);
                     });
                 }
             }
@@ -272,10 +317,18 @@ function loadSuccess() {
 };
 
 function poseQuestion() {
-    // alert(opgaveformulerings_Array[runde][1]);
-    // Lav opgave formuleringen om
-    $("h4").html("Sammensæt Ionforbindelsen der indeholder <b>" + positive_ioner[opgaveformulerings_Array[runde][1]] + "</b> og <b>" + negative_ioner[opgaveformulerings_Array[runde][1]] + "</b>, afstem reaktionen og vælg det rigtige resultat");
 
+    opg_neg = Math.floor(Math.random() * negative_ioner.length);
+    opg_pos = Math.floor(Math.random() * positive_ioner.length);
+
+    console.log("opg_neg: " + opg_neg + "opg_pos: " + opg_pos);
+    // Lav opgave formuleringen om
+    if (underopgave == "a"){$("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>, afstem reaktionen og vælg det rigtige resultat");
+}else if (underopgave == "b"){
+    $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b>, afstem reaktionen og vælg det rigtige resultat");
+
+}
+    
     //vælg den rigtige positive ion
 
     //vælg den rigtige negative ion - hvis ikke --> dialogbox
@@ -350,7 +403,7 @@ $(".scrubzone").mousedown(function(e) {
 $(".scrubzone").click(function(e) {
     console.log("clicked zone: " + e.pageX);
     //$(".scrubber").css("left", e.pageX);
-    var playpos = video.duration * (divPos.left / c_width);
+    var playpos = video.duration * (divPos.left / c_width) - 0.2;
     //console.log("playpos" + playpos);
     video.currentTime = playpos;
     video.play();
