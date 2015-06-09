@@ -133,9 +133,15 @@ sub {
 .bund_select {
     color: white;
     background-color: black;
-    border: 1px solid #eee;
     font-size: 25px;
     margin-right: 7px;
+}
+.bund_select_radio {
+    
+    background-color: transparent;
+    font-size: 25px;
+    margin-right: 7px;
+    margin-top: -50px;
 }
 
 .select_wrapper_reaktion {
@@ -145,6 +151,11 @@ sub {
 .radio_text {
     margin-left: 20px;
     display: inline;
+}
+
+.radio_cont{
+    display: inline;
+
 }
 
 .img_tabel_bundfald {
