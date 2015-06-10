@@ -168,3 +168,16 @@ sub {
     position: relative;
     width:auto;
 }
+
+.bundfald_score{
+    display: inline;
+    margin-left: 10px;
+    
+}
+.btn_tjeksvar{
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    position: absolute;
+}
