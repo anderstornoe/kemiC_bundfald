@@ -1,61 +1,52 @@
+
 .positiv_container {
     float: left;
     margin-left: 2%;
-    width: 30%;
+    width: 36%;
 }
-
 .pos_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
-
 .neg_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
-
 .negativ_container {
     float: right;
     margin-right: 2%;
-    width: 30%;
+    width: 36%;
 }
-
 .front_container {
     position: absolute;
     z-index: 1;
 }
-
 .videoplayer {
     background-color: black;
 }
-
 .inner_container {
     background-color: #333;
 }
-
 .btn {
     margin: 4px;
     width: 70px;
 }
-
-.media_container {}
-
+.media_container {
+}
 .scrub_container {
     width: 100%;
 }
-
 .scrubzone {
     background-color: #1784ae;
     bottom: 15px;
+    cursor: pointer;
     height: 12px;
     opacity: 0.4;
     position: absolute;
     width: 100%;
-    cursor: pointer;
 }
-
 .scrubber {
     background-color: #d0cec6;
     border-radius: 4px;
@@ -66,34 +57,27 @@
     position: absolute;
     width: 40px;
 }
-
 .ladnings_indikator {
     color: white;
 }
-
 .scrub_container {
     color: blue;
 }
-
 .loader {
     left: 50%;
     position: absolute;
     top: 50%;
 }
-
-sup,
-sub {
+sup, sub {
     font-size: 70%;
     margin-left: 1px;
 }
-
 .formel_container {
     clear: both;
     color: white;
     margin-top: 35%;
     width: 100%;
 }
-
 .pil_container {
     color: white;
     float: left;
@@ -105,79 +89,70 @@ sub {
     text-shadow: 1px 1px 0 #1784ae;
     width: 10%;
 }
-
 .CapitalI {
     font-family: "Georgia";
     font-weight: 100;
 }
-
 .small_l {
     font-family: "Georgia";
     font-weight: 100;
 }
-
 .reaktions_container {
     float: left;
     margin-right: -12px;
     text-align: right;
     width: 41%;
 }
-
 .resultat_container {
     float: left;
     margin-left: 1%;
     text-align: left;
     width: 37%;
 }
-
 .bund_select {
-    color: white;
     background-color: black;
+    color: white;
     font-size: 25px;
     margin-right: 7px;
 }
 .bund_select_radio {
-    
     background-color: transparent;
     font-size: 25px;
     margin-right: 7px;
     margin-top: -50px;
 }
-
 .select_wrapper_reaktion {
     margin-top: -20px;
 }
-
 .radio_text {
+    display: inline;
     margin-left: 20px;
+}
+.radio_cont {
     display: inline;
 }
-
-.radio_cont{
-    display: inline;
-
-}
-
 .img_tabel_bundfald {
+    cursor: pointer;
     position: absolute;
     z-index: 5;
-    cursor:pointer;
 }
-
 .tabel_toggle {
     position: relative;
-    width:auto;
+    width: auto;
 }
-
-.bundfald_score{
+.bundfald_score {
     display: inline;
     margin-left: 10px;
-    
 }
-.btn_tjeksvar{
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+.btn_tjeksvar {
+    font-size: 17px;
+    font-weight: 500;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
     position: absolute;
+    right: 0;
+    top: 60%;
+    width: 10%;
 }

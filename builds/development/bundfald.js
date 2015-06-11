@@ -33,6 +33,7 @@ var opg_neg;
 
 var max_score = 0;
 var score = 0;
+var fejl = 0;
 
 var matrix_Array = [
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
@@ -73,6 +74,9 @@ function manipulate_Arrays() {
 };
 
 function change_img(selected) {
+    if (opgavetype == 1) {
+        $(".btn_pos").off("click");
+    }
     percent = 0;
     $(".formel_container").fadeOut(0);
     $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
@@ -91,7 +95,9 @@ function change_img(selected) {
 }
 
 function change_video() {
-
+    if (opgavetype == 1) {
+        $(".btn_neg").off("click");
+    }
     var film;
     $(".vid_container").html("<video preload='auto' id='video' class='videoplayer'><source src='media/vid/" + matrix_Array[neg_selected][pos_selected] + ".mp4' autoplay ='true' type='video/mp4'></video>");
     $(".img_container").hide();
@@ -144,6 +150,58 @@ $(document).ready(function() {
 
     // knap listeners:
 
+    poseQuestion();
+
+});
+
+function loadSuccess() {
+    if (videoloaded == false) {
+        videoloaded = true;
+        $(".loader").hide();
+        $("#video").show();
+        console.log(video);
+        video.currentTime = 0;
+        video.play();
+        $(".scrub_container").show();
+    }
+};
+
+function poseQuestion() {
+
+    $(".scrub_container").fadeOut(0);
+    $(".bundfald_score").html("Din score er: <b>" + score + "/" + max_score + "</b> Fejl: <b>" + fejl + "</b>");
+
+    $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
+
+    $(".vid_container").fadeOut(0);
+    $(".img_container").fadeIn(300);
+
+    $(".img_container").attr("src", "media/img/BF_BG.jpg");
+
+    //console.log("CSPMARRAY: " + c_spmArray);
+
+    var rand_spm = Math.floor(Math.random() * c_spmArray.length);
+    c_spmArray.splice(rand_spm, 1);
+
+    opg_pos = c_spmArray[rand_spm][0];
+    opg_neg = c_spmArray[rand_spm][1];
+
+    //Opdatér spørgsmålet i toppen, der! 
+
+    $("h4").fadeOut(50, function() {
+
+        // Lav opgave formuleringen om
+        if (underopgave == "c_1") {
+            $("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+        } else if (underopgave == "c_2") {
+            $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+
+        } else if (underopgave == "d") {
+            $("h4").html("Dan Ionforbindelsen <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+        }
+        $("h4").fadeIn(2000)
+    });
+
     $(".btn_pos").click(function() {
         //UserMsgBox(".container-fluid", "Hurra - korrekt svar!");
 
@@ -155,6 +213,9 @@ $(document).ready(function() {
                 UserMsgBox(".inner_container", "Du har ikke valgt den rigtige positive ion");
                 pos_selected = false;
                 $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
+                fejl++;
+
+                $(".bundfald_score").html("Din score er: <b>" + score + "/" + max_score + "</b> Fejl: <b>" + fejl + "</b>");
             } else {
                 change_img($(this));
 
@@ -184,7 +245,13 @@ $(document).ready(function() {
                 $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
                 $(".formel_container").fadeIn(300);
                 // Hvis opgavetypen er '1' -> kør opgaven med interaktion / øvelse c eller d : 
-                change_video();
+                
+            if (reaktions_Array[pos_selected][neg_selected][2] == "no_show") {
+                UserMsgBox(".inner_container", "Denne kombination giver en reaktion, men ikke den forventede fældningsreaktion.");
+            }else{
+                 change_video();
+            }
+               
 
             } else if (opgavetype == 1) {
                 console.log("NB!!!: " + neg_selected + "," + opg_neg);
@@ -195,6 +262,10 @@ $(document).ready(function() {
                     UserMsgBox(".inner_container", "Du har ikke valgt den rigtige negative ion");
                     neg_selected = false;
                     $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
+                    fejl++;
+                    $(".bundfald_score").html("Din score er: <b>" + score + "/" + max_score + "</b> Fejl: <b>" + fejl + "</b>");
+
+
                 } else {
 
                     change_video();
@@ -246,7 +317,7 @@ $(document).ready(function() {
                         "<div class='radio_cont'><input class='radio_btn' type='radio' name='reaktion' value='1'><div class='radio_text'>" + reaktions_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
                         "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][0] + "</div></div><br/>" +
                         "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
-                        "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][2] + "</div></div><br/><div class='btn btn-info btn_tjeksvar'>Tjek svar</div>";
+                        "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][2] + "</div></div><br/><div class='btn btn-primary btn_tjeksvar'>Tjek svar</div>";
 
 
 
@@ -258,7 +329,10 @@ $(document).ready(function() {
 
                     $(".formel_container").fadeIn(300);
 
-                    $(".bund_select").change(function() {
+                    $(".btn_tjeksvar").click(function() {
+
+                        $(".bundfald_score").html("Din score er: <b>" + score + "/" + max_score + "</b> Fejl: <b>" + fejl + "</b>");
+
 
                         var svar_1 = $(".koeff_1").val();
                         var svar_2 = $(".koeff_2").val();
@@ -293,7 +367,7 @@ $(document).ready(function() {
                                 }
                                 console.log(index + ": " + $(this).text());
                             });
-                        } 
+                        }
 
                         if (korrekt_Array.indexOf(false) < 0) {
                             score++;
@@ -308,7 +382,24 @@ $(document).ready(function() {
                                 });
                             });
 
+                        } else {
+                            var feedback = "Du har følgende fejl: <br/>";
+                            if (korrekt_Array[0] == false) {
+                                feedback = feedback + "- Koefficent 1<br/>"
+                            }
+                            if (korrekt_Array[1] == false) {
+                                feedback = feedback + "- Koefficent 2<br/>"
+                            }
+                            if (korrekt_Array[2] == false) {
+                                feedback = feedback + "- Resultatet"
+                            }
+                            fejl++;
+
+                            $(".bundfald_score").html("Din score er: <b>" + score + "/" + max_score + "</b> Fejl: <b>" + fejl + "</b>");
+
+                            UserMsgBox(".inner_container", feedback);
                         }
+
 
                         console.log("korrekt: " + korrekt_Array);
                     });
@@ -328,54 +419,6 @@ $(document).ready(function() {
         video.addEventListener("canplaythrough", loadSuccess);
         $(".formel_container").css("opacity", 0);*/
     });
-
-    if (opgavetype == 1) {
-        poseQuestion();
-    }
-
-});
-
-function loadSuccess() {
-    if (videoloaded == false) {
-        videoloaded = true;
-        $(".loader").hide();
-        $("#video").show();
-        console.log(video);
-        video.currentTime = 0;
-        video.play();
-        $(".scrub_container").show();
-    }
-};
-
-function poseQuestion() {
-    $(".scrub_container").fadeOut(0);
-    $(".bundfald_score").html("Din score er: " + score + " / " + max_score);
-    $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
-
-    $(".vid_container").fadeOut(0);
-    $(".img_container").fadeIn(300);
-
-    $(".img_container").attr("src", "media/img/BF_BG.jpg");
-
-    //console.log("CSPMARRAY: " + c_spmArray);
-
-    var rand_spm = Math.floor(Math.random() * c_spmArray.length);
-
-    console.log("rand_spm: " + rand_spm);
-
-    opg_pos = c_spmArray[rand_spm][0];
-    opg_neg = c_spmArray[rand_spm][1]
-
-    console.log("opg_neg: " + opg_neg + "opg_pos: " + opg_pos);
-    // Lav opgave formuleringen om
-    if (underopgave == "c_1") {
-        $("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
-    } else if (underopgave == "c_2") {
-        $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
-
-    } else if (underopgave == "d") {
-        $("h4").html("Dan Ionforbindelsen <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
-    }
 }
 
 //
