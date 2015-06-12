@@ -1,43 +1,54 @@
-
 .positiv_container {
     float: left;
     margin-left: 2%;
     width: 36%;
+    text-align: center;
 }
+
 .pos_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
+
 .neg_stof {
     float: left;
     font-size: 30px;
     width: 50%;
 }
+
 .negativ_container {
     float: right;
     margin-right: 2%;
     width: 36%;
+    text-align: center;
 }
+
 .front_container {
     position: absolute;
     z-index: 1;
+    width: 100%;
 }
+
 .videoplayer {
     background-color: black;
 }
+
 .inner_container {
     background-color: #333;
 }
+
 .btn {
     margin: 4px;
     width: 70px;
 }
-.media_container {
-}
+
+.media_container {}
+
 .scrub_container {
     width: 100%;
 }
+
 .scrubzone {
     background-color: #1784ae;
     bottom: 15px;
@@ -47,6 +58,7 @@
     position: absolute;
     width: 100%;
 }
+
 .scrubber {
     background-color: #d0cec6;
     border-radius: 4px;
@@ -57,27 +69,34 @@
     position: absolute;
     width: 40px;
 }
+
 .ladnings_indikator {
     color: white;
 }
+
 .scrub_container {
     color: blue;
 }
+
 .loader {
     left: 50%;
     position: absolute;
     top: 50%;
 }
-sup, sub {
+
+sup,
+sub {
     font-size: 70%;
     margin-left: 1px;
 }
+
 .formel_container {
     clear: both;
     color: white;
     margin-top: 35%;
     width: 100%;
 }
+
 .pil_container {
     color: white;
     float: left;
@@ -89,61 +108,74 @@ sup, sub {
     text-shadow: 1px 1px 0 #1784ae;
     width: 10%;
 }
+
 .CapitalI {
     font-family: "Georgia";
     font-weight: 100;
 }
+
 .small_l {
     font-family: "Georgia";
     font-weight: 100;
 }
+
 .reaktions_container {
     float: left;
     margin-right: -12px;
     text-align: right;
     width: 41%;
 }
+
 .resultat_container {
     float: left;
     margin-left: 1%;
     text-align: left;
     width: 37%;
 }
+
 .bund_select {
     background-color: black;
     color: white;
     font-size: 25px;
     margin-right: 7px;
 }
+
 .bund_select_radio {
     background-color: transparent;
     font-size: 25px;
     margin-right: 7px;
     margin-top: -50px;
 }
+
 .select_wrapper_reaktion {
     margin-top: -20px;
 }
+
 .radio_text {
     display: inline;
     margin-left: 20px;
 }
+
 .radio_cont {
     display: inline;
 }
+
 .img_tabel_bundfald {
     cursor: pointer;
     position: absolute;
     z-index: 5;
 }
+
 .tabel_toggle {
     position: relative;
     width: auto;
 }
+
 .bundfald_score {
     display: inline;
     margin-left: 10px;
 }
+
 .btn_tjeksvar {
     font-size: 17px;
     font-weight: 500;
@@ -156,3 +188,22 @@ sup, sub {
     top: 60%;
     width: 10%;
 }
+
+.btn_ja {
+    font-size: 36px;
+    width: 200px;
+    padding: 0px 20px 10px 20px;
+    text-align: center;
+    }
+
+.btn_nej {
+    
+    font-size: 36px;
+    width: 200px;
+    padding: 0px 20px 10px 20px;
+    }
+
+.ja-nej_container{
+    width: 100%;
+    text-align: center;
+padding:2%}
