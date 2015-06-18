@@ -207,3 +207,8 @@ sub {
     width: 100%;
     text-align: center;
 padding:2%}
+
+.blurry{
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}

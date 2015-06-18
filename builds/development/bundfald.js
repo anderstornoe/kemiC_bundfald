@@ -87,9 +87,10 @@ function change_img(selected) {
     }
     percent = 0;
     $(".formel_container").fadeOut(0);
-    $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
+    $(".btn_pos").removeClass("btn-primary").addClass("btn-info"); //.addClass("blurry");
     $(".vid_container").fadeOut(0);
-    selected.addClass("btn-primary").removeClass("btn-info");
+    $()
+    selected.addClass("btn-primary"); //.removeClass("btn-info blurry");
     //video.currentTime = 0;
     video.pause();
     console.log("pos: " + pos_selected);
@@ -103,9 +104,7 @@ function change_img(selected) {
 }
 
 function change_video() {
-    if (opgavetype == 1) {
-        $(".btn_neg").off("click");
-    }
+    console.log("change_video");
     var film;
     $(".vid_container").html("<video preload='auto' id='video' class='videoplayer'><source src='media/vid/" + matrix_Array[neg_selected][pos_selected] + ".mp4' autoplay ='true' type='video/mp4'></video>");
     $(".img_container").hide();
@@ -113,7 +112,11 @@ function change_video() {
 
     videoloaded = false;
     $(".loader").show();
-    video.addEventListener("canplaythrough", loadSuccess);
+    console.log("$('.loader').show();");
+    console.log(video);
+    var hej = video;
+    //video.addEventListener("canplaythrough", loadSuccess);
+    loadSuccess();
     $(".formel_container").fadeIn(300);
 }
 
@@ -163,14 +166,24 @@ $(document).ready(function() {
 });
 
 function loadSuccess() {
+    console.log("loadSuccess");
     if (videoloaded == false) {
+        
         videoloaded = true;
+        
         $(".loader").hide();
+        
         $("#video").show();
+        
         console.log(video);
-        video.currentTime = 0;
+        
+        
+        //video.currentTime = 0;
+        
         video.play();
+        
         $(".scrub_container").show();
+    
     }
 };
 
@@ -254,7 +267,7 @@ function poseQuestion() {
 
                     if (opgavetype == 0) {
                         console.log("fademeIN")
-                        // Tjek det første led af reaktionen: 
+                            // Tjek det første led af reaktionen: 
                         $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                         $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
                         $(".formel_container").fadeIn(300);
@@ -463,7 +476,7 @@ function poseQuestion() {
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
                     UserMsgBox(".inner_container", "Korrekt, ved denne proces dannes " + reaktions_Array[opg_pos][opg_neg][2]);
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
-                     $(".btn_ja, .btn_nej").fadeOut(500);
+                    $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
                         $(this).fadeOut();
                         poseQuestion();
@@ -591,7 +604,7 @@ $(document).mousemove(function(e) {
 // Scrubber event listener: 
 
 setInterval(function() {
-    console.log("kører vi?")
+    //console.log("kører vi?")
     percent = video.currentTime / video.duration;
     if (dragging == false) {
         var scrub_pos = percent * c_width;
