@@ -2,8 +2,7 @@
     float: left;
     margin-left: 2%;
     width: 36%;
-    text-align: center;
-}
+    }
 
 .pos_stof {
     float: left;
@@ -21,7 +20,7 @@
     float: right;
     margin-right: 2%;
     width: 36%;
-    text-align: center;
+    
 }
 
 .front_container {
@@ -103,7 +102,7 @@ sub {
     font-size: 2.5em;
     margin-left: 7%;
     margin-right: 5%;
-    margin-top: 12px;
+    margin-top: -10px;
     text-align: center;
     text-shadow: 1px 1px 0 #1784ae;
     width: 10%;
@@ -169,6 +168,7 @@ sub {
 .tabel_toggle {
     position: relative;
     width: auto;
+    margin-left: 0px;
 }
 
 .bundfald_score {
@@ -177,23 +177,22 @@ sub {
 }
 
 .btn_tjeksvar {
-    font-size: 17px;
-    font-weight: 500;
-    left: 0;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
-    position: absolute;
-    right: 0;
-    top: 60%;
-    width: 10%;
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: auto;
+  padding: 5px;
+  position: absolute;
+  right: 5%;
+  bottom: 1%;
+  width: 100px;
 }
 
 .btn_ja {
     font-size: 36px;
     width: 200px;
     padding: 0px 20px 10px 20px;
-    text-align: center;
+    left:10%;
+    position: absolute;
     }
 
 .btn_nej {
@@ -201,6 +200,8 @@ sub {
     font-size: 36px;
     width: 200px;
     padding: 0px 20px 10px 20px;
+    position: absolute; 
+    right:10%;
     }
 
 .ja-nej_container{

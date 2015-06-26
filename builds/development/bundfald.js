@@ -7,7 +7,7 @@ var neg_selected = false;
 
 var pic_Array = ["Nh4plus.jpg", "Naplus.jpg", "Kplus.jpg", "Mg2plus.jpg", "Zn2plus.jpg", "Cu2plus.jpg", "Fe2plus.jpg", "Fe3plus.jpg", "Ca2plus.jpg", "Ba2plus.jpg", "Pb2plus.jpg", "Agplus.jpg"];
 
-var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup>", "Br<sup>-</sup>", "I<sup>-</sup>", "SO<sub>4</sub><sup>2-</sup>", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
+var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup>", "Br<sup>-</sup>", "<span class='CapitalI'>I</span><sup>-</sup>", "SO<sub>4</sub><sup>2-</sup>", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
 var positive_ioner = ["NH<sub>4</sub><sup>+</sup>", "Na<sup>+</sup>", "K<sup>+</sup>", "Mg<sup>2+</sup>", "Zn<sup>2+</sup>", "Cu<sup>2+</sup>", "Fe<sup>2+</sup>", "Fe<sup>3+</sup>", "Ca<sup>2+</sup>", "Ba<sup>2+</sup>", "Pb<sup>2+</sup>", "Ag<sup>+</sup>"];
 
 //var myLoader = html5Preloader();
@@ -87,7 +87,7 @@ function change_img(selected) {
     }
     percent = 0;
     $(".formel_container").fadeOut(0);
-    $(".btn_pos").removeClass("btn-primary").addClass("btn-info"); //.addClass("blurry");
+    //$(".btn_pos").removeClass("btn-primary").addClass("btn-info"); //.addClass("blurry");
     $(".vid_container").fadeOut(0);
     $()
     selected.addClass("btn-primary"); //.removeClass("btn-info blurry");
@@ -168,26 +168,28 @@ $(document).ready(function() {
 function loadSuccess() {
     console.log("loadSuccess");
     if (videoloaded == false) {
-        
+
         videoloaded = true;
-        
+
         $(".loader").hide();
-        
+
         $("#video").show();
-        
+
         console.log(video);
-        
-        
+
+
         //video.currentTime = 0;
-        
+
         video.play();
-        
+
         $(".scrub_container").show();
-    
+
     }
 };
 
 function poseQuestion() {
+
+
 
     if (runde < antal_spm) {
         //alert ("hej");
@@ -196,6 +198,7 @@ function poseQuestion() {
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
+
         $(".vid_container").fadeOut(0);
         $(".img_container").fadeIn(300);
 
@@ -203,7 +206,9 @@ function poseQuestion() {
 
         //console.log("CSPMARRAY: " + c_spmArray);
 
-        var rand_spm = Math.floor(Math.random() * c_spmArray.length);
+        var rand_spm = Math.abs(Math.floor(Math.random() * c_spmArray.length-1));
+
+        console.log("rand_spm" + rand_spm);
         c_spmArray.splice(rand_spm, 1);
 
         opg_pos = c_spmArray[rand_spm][0];
@@ -215,12 +220,12 @@ function poseQuestion() {
 
             // Lav opgave formuleringen om
             if (underopgave == "c_1") {
-                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
             } else if (underopgave == "c_2") {
-                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
 
             } else if (underopgave == "d") {
-                $("h4").html("Dan Ionforbindelsen <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Dan Ionforbindelsen <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. <br/>Afstem reaktionen og vælg det rigtige produkt.");
             }
             $("h4").fadeIn(2000)
         });
@@ -242,6 +247,8 @@ function poseQuestion() {
 
                         $(".bundfald_score").html("Din score er: <b>" + score + "/" + antal_spm + "</b> Fejl: <b>" + fejl + "</b>");
                     } else {
+                        //alert("hej");
+                        $(this).removeClass("btn-info"); //.addClass("btn-primary");
                         change_img($(this));
 
                     }
@@ -402,6 +409,8 @@ function poseQuestion() {
                                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
 
                                     $("body").click(function() {
+                                        $( "body" ).off("click");
+
                                         $(".formel_container").fadeOut(0, function() {
                                             //$(".formel_container").html("");
                                             poseQuestion();
@@ -501,6 +510,7 @@ function poseQuestion() {
         UserMsgBox(".inner_container", "Flot, du har lavet 10 opgaver korrekt! <br/> Du havde " + fejl + " undervejs. <br/>Klik for at prøve igen med 10 nye opgaver.")
             //Slut feedback og spm: 
         $("body").click(function() {
+             $( "body" ).off("click");
             runde = 0;
             fejl = 0;
             score = 0;
