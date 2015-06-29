@@ -220,12 +220,12 @@ function poseQuestion() {
 
             // Lav opgave formuleringen om
             if (underopgave == "c_1") {
-                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
             } else if (underopgave == "c_2") {
-                $("h4").html("Dan Ionforbindelsen der indeholder <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
 
             } else if (underopgave == "d") {
-                $("h4").html("Dan Ionforbindelsen <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Vælg de ioner der danner bundfaldet <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. <br/>Afstem reaktionen.");
             }
             $("h4").fadeIn(2000)
         });
@@ -463,9 +463,9 @@ function poseQuestion() {
             pos_selected = opg_pos;
             neg_selected = opg_neg;
             if (underopgave == "a") {
-                $("h4").html("Dannes der bundfald med ionerne <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b> blandes?");
+                $("h4").html("Dannes der bundfald, når man blander ionerne <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
             } else if (underopgave == "b") {
-                $("h4").html("Dannes der bundfald når ionerne <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> blandes?");
+                $("h4").html("Dannes der bundfald, når man blander <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
 
             }
 
