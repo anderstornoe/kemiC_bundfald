@@ -470,7 +470,7 @@ function poseQuestion() {
             }
 
             $(".positiv_container").html("<br/><br/><br/><br/><br/><br/><br/><div class='btn btn-primary btn_ja' value='0'> JA </div>");
-            $(".negativ_container").html("<br/><br/><br/><br/<br/><br/><br/><br/><div class='btn btn-primary btn_nej' value='1' >NEJ</div></div>");
+            $(".negativ_container").html("<br/><br/><br/><br/><br/><br/><br/><div class='btn btn-primary btn_nej' value='1' >NEJ</div></div>");
 
             //$(".negativ_container").html("KORREKT");
             $(".btn_ja, .btn_nej").click(function() {
