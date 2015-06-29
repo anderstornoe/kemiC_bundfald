@@ -166,14 +166,15 @@ sub {
 }
 
 .tabel_toggle {
-    position: relative;
-    width: auto;
-    margin-left: 0px;
+  position: relative;
+  width: auto;
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .bundfald_score {
     display: inline;
-    margin-left: 10px;
 }
 
 .btn_tjeksvar {
@@ -188,18 +189,18 @@ sub {
 }
 
 .btn_ja {
-    font-size: 36px;
-    width: 200px;
-    padding: 0px 20px 10px 20px;
-    left:10%;
-    position: absolute;
-    }
+  font-size: 30px;
+  width: 160px;
+  padding: 7px 20px 10px 20px;
+  left: 10%;
+  position: absolute;
+}
 
 .btn_nej {
     
-    font-size: 36px;
-    width: 200px;
-    padding: 0px 20px 10px 20px;
+    font-size: 30px;
+    width: 160px;
+    padding: 7px 20px 10px 20px;
     position: absolute; 
     right:10%;
     }

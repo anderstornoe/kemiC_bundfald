@@ -348,10 +348,10 @@ function poseQuestion() {
                             /// Generer svar_muligheder i reaktionsscontaineren: 
 
                             var resultat_interaktion = "<div class='select_wrapper_reaktion'><form id='reak_form' class='bund_select bund_select_radio'>" +
-                                "<div class='radio_cont'><input class='radio_btn' type='radio' name='reaktion' value='1'><div class='radio_text'>" + reaktions_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
-                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][0] + "</div></div><br/>" +
-                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
-                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text 0_rdio'>" + svar_Array[opg_pos][opg_neg][2] + "</div></div><br/><div class='btn btn-primary btn_tjeksvar'>Tjek svar</div>";
+                                "<div class='radio_cont'><input class='radio_btn' type='radio' name='reaktion' value='1'><div class='radio_text h2'>" + reaktions_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
+                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text h2 0_rdio'>" + svar_Array[opg_pos][opg_neg][0] + "</div></div><br/>" +
+                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text h2 0_rdio'>" + svar_Array[opg_pos][opg_neg][1] + "</div></div><br/>" +
+                                "<div class='radio_cont'><input type='radio' class='radio_btn' name='reaktion' value='0'><div class='radio_text h2 0_rdio'>" + svar_Array[opg_pos][opg_neg][2] + "</div></div><br/><div class='btn btn-primary btn_tjeksvar'>Tjek svar</div>";
 
 
 
@@ -408,10 +408,10 @@ function poseQuestion() {
                                     UserMsgBox(".inner_container", "Du har afstemt reaktionsskemaet korrekt.");
                                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
 
-                                    $("body").click(function() {
+                                    $(".MsgBox_bgr").click(function() {
                                         $( "body" ).off("click");
 
-                                        $(".formel_container").fadeOut(0, function() {
+                                        $(".formel_container").fadeOut(1000, function() {
                                             //$(".formel_container").html("");
                                             poseQuestion();
 
@@ -419,7 +419,7 @@ function poseQuestion() {
                                     });
 
                                 } else {
-                                    var feedback = "Du har følgende fejl: <br/>";
+                                    var feedback = "<b>Du har følgende fejl: </b><br/>";
                                     if (korrekt_Array[0] == false) {
                                         feedback = feedback + "- Første koefficent<br/>"
                                     }
@@ -427,7 +427,7 @@ function poseQuestion() {
                                         feedback = feedback + "- Anden koefficent<br/>"
                                     }
                                     if (korrekt_Array[2] == false) {
-                                        feedback = feedback + "- Resultatet"
+                                        feedback = feedback + "- Produktet"
                                     }
                                     fejl++;
 
@@ -469,8 +469,8 @@ function poseQuestion() {
 
             }
 
-            $(".positiv_container").html("<br/><br/><div class='btn btn-primary btn_ja' value='0'> JA </div>");
-            $(".negativ_container").html("<br/><br/><div class='btn btn-primary btn_nej' value='1' >NEJ</div></div>");
+            $(".positiv_container").html("<br/><br/><br/><br/><br/><br/><br/><div class='btn btn-primary btn_ja' value='0'> JA </div>");
+            $(".negativ_container").html("<br/><br/><br/><br/<br/><br/><br/><br/><div class='btn btn-primary btn_nej' value='1' >NEJ</div></div>");
 
             //$(".negativ_container").html("KORREKT");
             $(".btn_ja, .btn_nej").click(function() {
@@ -483,7 +483,7 @@ function poseQuestion() {
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    UserMsgBox(".inner_container", "Korrekt, ved denne proces dannes " + reaktions_Array[opg_pos][opg_neg][2]);
+                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2]);
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {

@@ -16,11 +16,12 @@
 <body>
     <div class="container-fluid">
         <h1>Kombiner to ioner ud fra formlen</h1>
-        <h4>Klik på en positiv ion og derefter en negativ. Se hvad der sker når stofferne blandes</h4>
+        <h4 class="QuestionTask">Klik på en positiv ion og derefter en negativ. Se hvad der sker når stofferne blandes</h4>
+        <div class="h4 bundfald_score">Din score</div>
+        <div class="btn btn-default tabel_toggle" value="hide">Tabel: Let og tungt opløselige salte</div>
         
-        <div class="btn btn-primary tabel_toggle" value="hide">Tabel: Let og tungt opløselige salte</div><div class="h4 bundfald_score">Din score</div>
         <div class="col-xs-12 inner_container">
-           <img class="img-responsive img_tabel_bundfald" src="media/img/L_T_skema_big.png">
+            <img class="img-responsive img_tabel_bundfald" src="media/img/L_T_skema_big.png">
             <div class="front_container">
                 <div class="positiv_container">
                     <div class="ladnings_indikator h2">Positive ioner</div>
@@ -47,12 +48,10 @@
             </div>
         </div>
     </div>
-
-
     <script src="../../../library/vendor_scripts.js"></script>
     <script src="../../../library/html5Preloader.js"></script>
     <script src="bundfald.js"></script>
-     <script src="data.js"></script>
+    <script src="data.js"></script>
     <script>
     opgavetype = 1;
     underopgave = "c_1";
