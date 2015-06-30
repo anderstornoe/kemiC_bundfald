@@ -163,6 +163,9 @@ $(document).ready(function() {
 
     poseQuestion();
 
+    $(".bundfald_score b").eq(0).html('<span class="QuestionTask">'+$(".bundfald_score b").eq(0).text()+'</span>'); // Wrapping "score" in span-tag with class QuestionTask.
+    $(".bundfald_score b").eq(1).html('<span class="QuestionTask">'+$(".bundfald_score b").eq(1).text()+'</span>'); // Wrapping "fejl" in span-tag with class QuestionTask.
+
 });
 
 function loadSuccess() {
@@ -463,9 +466,9 @@ function poseQuestion() {
             pos_selected = opg_pos;
             neg_selected = opg_neg;
             if (underopgave == "a") {
-                $("h4").html("Dannes der bundfald, når man blander ionerne <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b>? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
+                $("h4").html("Dannes der bundfald, når man blander ionerne <b><span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span></b>? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
             } else if (underopgave == "b") {
-                $("h4").html("Dannes der bundfald, når man blander <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
+                $("h4").html("Dannes der bundfald, når man blander <b><span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span></b> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
 
             }
 
