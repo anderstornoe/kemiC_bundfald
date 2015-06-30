@@ -223,12 +223,12 @@ function poseQuestion() {
 
             // Lav opgave formuleringen om
             if (underopgave == "c_1") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <b>" + positive_ioner[opg_pos] + "</b> og <b>" + negative_ioner[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <b><span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span></b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
             } else if (underopgave == "c_2") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <b>" + p_ioner_navne[opg_pos] + "</b> og <b>" + n_ioner_navne[opg_neg] + "</b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <b><span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span></b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
 
             } else if (underopgave == "d") {
-                $("h4").html("Vælg de ioner der danner bundfaldet <b>" + reaktions_Array[opg_pos][opg_neg][2] + "</b>. <br/>Afstem reaktionen.");
+                $("h4").html("Vælg de ioner der danner bundfaldet <b><span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span></b>. <br/>Afstem reaktionen.");
             }
             $("h4").fadeIn(2000)
         });
