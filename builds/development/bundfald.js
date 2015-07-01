@@ -507,7 +507,7 @@ function poseQuestion() {
 
     } else {
         $("#UserMsgBox").fadeOut(0);
-        UserMsgBox(".inner_container", "Flot, du har lavet 10 opgaver korrekt! <br/> Du havde " + fejl + " undervejs. <br/>Klik for at prøve igen med 10 nye opgaver.")
+        UserMsgBox(".inner_container", "Flot, du har lavet 10 opgaver korrekt! <br/> Du havde " + fejl + " fejl undervejs. <br/>Klik for at prøve igen med 10 nye opgaver.")
             //Slut feedback og spm: 
         $("body").click(function() {
              $( "body" ).off("click");
