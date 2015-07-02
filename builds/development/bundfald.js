@@ -32,7 +32,7 @@ var opg_pos;
 var opg_neg;
 
 var max_score = 0;
-var score = 0;
+var score = 1;
 var fejl = 0;
 var antal_spm = 10;
 
@@ -194,7 +194,7 @@ function poseQuestion() {
     if (runde < antal_spm) {
         //alert ("hej");
         $(".scrub_container").fadeOut(0);
-        $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+        $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
@@ -220,12 +220,12 @@ function poseQuestion() {
 
             // Lav opgave formuleringen om
             if (underopgave == "c_1") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <b><span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span></b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
             } else if (underopgave == "c_2") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <b><span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span></b> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
 
             } else if (underopgave == "d") {
-                $("h4").html("Vælg de ioner der danner bundfaldet <b><span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span></b>. <br/>Afstem reaktionen.");
+                $("h4").html("Vælg de ioner der danner bundfaldet <span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span>. <br/>Afstem reaktionen.");
             }
             $("h4").fadeIn(2000)
         });
@@ -245,7 +245,7 @@ function poseQuestion() {
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
 
-                        $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                        $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     } else {
                         //alert("hej");
                         $(this).removeClass("btn-info"); //.addClass("btn-primary");
@@ -297,7 +297,7 @@ function poseQuestion() {
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
-                            $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                            $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
 
                         } else {
@@ -365,7 +365,7 @@ function poseQuestion() {
 
                             $(".btn_tjeksvar").click(function() {
 
-                                $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                                $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
 
                                 var svar_1 = $(".koeff_1").val();
@@ -431,7 +431,7 @@ function poseQuestion() {
                                     }
                                     fejl++;
 
-                                    $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
                                     UserMsgBox(".inner_container", feedback);
                                 }
@@ -463,9 +463,9 @@ function poseQuestion() {
             pos_selected = opg_pos;
             neg_selected = opg_neg;
             if (underopgave == "a") {
-                $("h4").html("Dannes der bundfald, når man blander ionerne <b><span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span></b>? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
+                $("h4").html("Dannes der bundfald, når man blander ionerne <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
             } else if (underopgave == "b") {
-                $("h4").html("Dannes der bundfald, når man blander <b><span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span></b> og <b><span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span></b> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
+                $("h4").html("Dannes der bundfald, når man blander <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> ? <br/> Brug tabellen til at forudsige om der dannes bundfald.");
 
             }
 
@@ -479,7 +479,7 @@ function poseQuestion() {
                 // console.log(reaktions_Array[opg_pos][opg_neg][2]);
                 if ((reaktions_Array[opg_pos][opg_neg][2] == "intet bundfald" && selected == 1) || (reaktions_Array[opg_pos][opg_neg][2] != "intet bundfald" && selected == 0)) {
                     score++;
-                    $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
@@ -497,7 +497,7 @@ function poseQuestion() {
                 } else {
                     fejl++;
                     UserMsgBox(".inner_container", "Det er ikke rigtigt, prøv igen");
-                    $(".bundfald_score").html("Din score er: <b><span class='QuestionTask'>" + score + "/" + antal_spm + "</span></b> Fejl: <b><span class='QuestionTask'>" + fejl + "</span></b>");
+                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                 }
             });
 
@@ -513,7 +513,7 @@ function poseQuestion() {
              $( "body" ).off("click");
             runde = 0;
             fejl = 0;
-            score = 0;
+            score = 1;
             $(".formel_container").fadeOut(0, function() {
                 //$(".formel_container").html("");
                 poseQuestion();
