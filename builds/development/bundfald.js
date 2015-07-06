@@ -84,13 +84,14 @@ function manipulate_Arrays() {
 function change_img(selected) {
     if (opgavetype == 1) {
         $(".btn_pos").off("click");
+        alert("1");
     }
     percent = 0;
     $(".formel_container").fadeOut(0);
-    //$(".btn_pos").removeClass("btn-primary").addClass("btn-info"); //.addClass("blurry");
+    $(".btn_pos").removeClass("btn-primary").addClass("btn-info"); //.addClass("blurry");
     $(".vid_container").fadeOut(0);
-    $()
-    selected.addClass("btn-primary"); //.removeClass("btn-info blurry");
+    //selected.hide();
+    selected.addClass("btn-primary").removeClass("btn-info"); //.removeClass("btn-info blurry");
     //video.currentTime = 0;
     video.pause();
     console.log("pos: " + pos_selected);
@@ -248,7 +249,7 @@ function poseQuestion() {
                         $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     } else {
                         //alert("hej");
-                        $(this).removeClass("btn-info"); //.addClass("btn-primary");
+                        //$(this).removeClass("btn-info").addClass("btn-primary");
                         change_img($(this));
 
                     }
