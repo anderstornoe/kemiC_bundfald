@@ -1,7 +1,6 @@
 var playing = false;
 var mousedown = false;
 
-
 var pos_selected = false;
 var neg_selected = false;
 
@@ -52,6 +51,8 @@ var matrix_Array = [
 
 var c_spmArray = [];
 
+
+
 // PRELOAD VIDEOS USING html5Preloader.js
 // Load videoerne en af gangen og gør billederne aktive som de loades ind...! 
 //Noget med et loop ud fra et array af film: 
@@ -84,7 +85,7 @@ function manipulate_Arrays() {
 function change_img(selected) {
     if (opgavetype == 1) {
         $(".btn_pos").off("click");
-        alert("1");
+        
     }
     percent = 0;
     $(".formel_container").fadeOut(0);
@@ -392,13 +393,14 @@ function poseQuestion() {
                                 }
                                 console.log("korrekt: " + korrekt);
                                 if (svar_3 == "1") {
+                                     $('input[type=radio]').hide();
                                     korrekt_Array.splice(2, 1, true);
                                     $(".0_rdio").css("opacity", ".3");
                                     $(".0_rdio").each(function(index) {
                                         if ($(this).attr("value") == "0") {
                                             $(this).css("opacity", ".3");
-                                            $(".radio_btn").attr('disabled', true);
-
+                                            
+                                            
                                         }
                                         console.log(index + ": " + $(this).text());
                                     });
