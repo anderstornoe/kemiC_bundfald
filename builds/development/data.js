@@ -137,11 +137,12 @@ var reaktions_Array = [
 var svar_Array = [
     [
         ["NH<sub>4</sub>(NO<sub>3</sub>)<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>NO<sub>3</sub> (s)", "NH<sub>4</sub>NO<sub>3</sub> (s)"],
-        ["NH<sub>4</sub>Cl<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>Cl (s)", "NH<sub>4</sub>Cl (s)"],
+        ["NH<sub>4</sub>C<span class='small_l'>l</span><sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>Cl (s)", "NH<sub>4</sub>Cl (s)"],
         ["NH<sub>4</sub>Br<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>Br (s)", "NH<sub>4</sub>Br (s)"],
         ["NH<sub>4</sub><span class='CapitalI'>I</span><sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub><span class='CapitalI'>I</span> (s)", "NH<sub>4</sub><span class='CapitalI'>I</span> (s)"],
         ["NH<sub>4</sub>SO<sub>4</sub> (s)", "NH<sub>4</sub>(SO<sub>4</sub>)<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> (s)"],
         ["NH<sub>4</sub>CO<sub>3</sub> (s)", "NH<sub>4</sub>(CO<sub>3</sub>)<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> (s)"],
+        ["NH<sub>4</sub>(OH)<sub>2</sub>(s)", "(NH<sub>4</sub>)<sub>2</sub>OH(s)", "NH<sub>4</sub>OH(s)"],
         ["NH<sub>4</sub>S<sub>2</sub> (s)", "(NH<sub>4</sub>)<sub>2</sub>S (s)", "NH<sub>4</sub>S (s)"],
         ["NH<sub>4</sub>PO<sub>4</sub> (s)", "NH<sub>4</sub>(PO<sub>4</sub>)<sub>3</sub> (s)", "(NH<sub>4</sub>)<sub>3</sub>PO<sub>4</sub> (s)"]
     ],
@@ -164,10 +165,10 @@ var svar_Array = [
         ["KSO<sub>4</sub> (s)", "K(SO<sub>4</sub>)<sub>2</sub> (s)", "K<sub>2</sub>SO<sub>4</sub> (s)"],
         ["KCO<sub>3</sub> (s)", "K(CO<sub>3</sub>)<sub>2</sub> (s)", "K<sub>2</sub>CO<sub>3</sub> (s)"],
         ["K(OH)<sub>2</sub> (s)", "K<sub>2</sub>OH (s)", "KOH (s)"],
-        ["KS<sub>2</sub> (s)", "K<sub>2</sub>S (s)", "KS (s)"]
+        ["KS<sub>2</sub> (s)", "K<sub>2</sub>S (s)", "KS (s)"],
+        ["KPO<sub>4</sub> (s)", "K(PO<sub>4</sub>)<sub>3</sub> (s)", "K<sub>3</sub>PO<sub>4</sub> (s)"]
     ],
     [
-        ["KPO<sub>4</sub> (s)", "K(PO<sub>4</sub>)<sub>3</sub> (s)", "K<sub>3</sub>PO<sub>4</sub> (s)"],
         ["Mg(NO<sub>3</sub>)<sub>2</sub> (s)", "Mg<sub>2</sub>NO<sub>3</sub> (s)", "MgNO<sub>3</sub> (s)"],
         ["MgCl<sub>2</sub> (s)", "Mg<sub>2</sub>Cl (s)", "MgCl (s)"],
         ["MgBr<sub>2</sub> (s)", "Mg<sub>2</sub>Br (s)", "MgBr (s)"],
