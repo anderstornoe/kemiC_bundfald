@@ -131,7 +131,7 @@ var reaktions_Array = [
         ["2Ag<sup>+</sup>(aq) + CO<sub>3</sub><sup>2-</sup>(aq)", "Ag<sub>2</sub>CO<sub>3</sub>(s)", "Sølv(I)carbonat"],
         ["2Ag<sup>+</sup>(aq) + 2OH<sup>-</sup>(aq)", "Ag<sub>2</sub>O(s) + H2O(l)", "no_show"],
         ["2Ag<sup>+</sup>(aq) + S<sup>2-</sup>(aq)", "Ag<sub>2</sub>S(s)", "Sølv(I)sulfid"],
-        ["3Ag<sup>+</sup>(aq) + 2PO<sub>4</sub><sup>3-</sup>(aq)", "Ag<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>(s)", "Sølv(I)phosphat"]
+        ["3Ag<sup>+</sup>(aq) + PO<sub>4</sub><sup>3-</sup>(aq)", "Ag<sub>3</sub>PO<sub>4</sub>(s)", "Sølv(I)phosphat"]
     ]
 ];
 var svar_Array = [
