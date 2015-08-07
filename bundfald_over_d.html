@@ -8,19 +8,17 @@
     <title>Kemi C - princip 1</title>
     <meta name="author" content="ato" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../../../library/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../library/css/styles.css" type="text/css" />
     <link rel="stylesheet" href="bundfald.css" type="text/css" />
     <!-- Date: 2012-08-07 -->
-
 </head>
 
 <body>
     <div class="container-fluid">
-        <h1>Se fældningsreaktionen og afstem ion-reaktionsskemaet <img class="TaskNumberImg" src="../../../library/img/TaskNumbers_1.svg"> </h1>
+        <h1>Se fældningsreaktionen og afstem ion-reaktionsskemaet <img class="TaskNumberImg" src="../library/img/TaskNumbers_3.svg"></h1>
         <h4 class="QuestionTaskWrap">Klik på en positiv ion og derefter en negativ. Se hvad der sker når stofferne blandes</h4>
         <div class="h5 bundfald_score">Spørgsmål:</div>
         <div class="btn btn-default tabel_toggle" value="hide">Tabel: Let og tungt opløselige salte</div>
-        
         <div class="col-xs-12 inner_container">
             <img class="img-responsive img_tabel_bundfald" src="media/img/L_T_skema_big.png">
             <div class="front_container">
@@ -32,7 +30,7 @@
                 </div>
                 <div class="formel_container">
                     <div class="reaktions_container h2">NH<sub>4</sub><sup>+</sup>(aq) + NO<sub>3</sub><sup>-</sup>(aq) </div>
-                    <div class="pil_container"><img src="../../../library/img/glyphicon_reaktionspil_white2.svg" aria-hidden="true">
+                    <div class="pil_container"><img src="../library/img/glyphicon_reaktionspil_white2.svg" aria-hidden="true">
                     </div>
                     <div class="resultat_container h2">Ingen bundfældning</div>
                 </div>
@@ -42,56 +40,22 @@
                 <video id="video" class="videoplayer ">
                 </video>
             </div>
-            <img class="loader" src="../../../library/img/ajax-loader2.gif">
+            <img class="loader" src="../library/img/ajax-loader2.gif">
             <div class="scrub_container">
                 <div class="scrubzone"></div>
                 <div class="scrubber"></div>
             </div>
         </div>
     </div>
-
-    <div id="TaTestOutput"></div>
-
-    <script src="../../../library/vendor_scripts.js"></script><script src="../../../library/custom_scripts.js"></script>
-    <script src="../../../library/html5Preloader.js"></script>
+    <script src="../library/vendor_scripts.js"></script><script src="../library/custom_scripts.js"></script>
     <script src="bundfald.js"></script>
     <script src="data.js"></script>
     <script>
     opgavetype = 1;
-    underopgave = "c_1";
+    underopgave = "d";
     // alert ($.fn.jquery); 
     //loadData("bundfald.json");
     </script>
-    <script type="text/javascript">
-        var RA = reaktions_Array;
-        console.log("RA: " + RA);
-        var HTML = "<h3>Korrekt data</h3><br/>";
-        for (var i in RA) {
-            for (var k in RA[i]) {
-                HTML += RA[i][k] + "<br/>";
-            };
-            HTML += "<br/>";
-        };
-
-        HTML += "<h3>Forkerte svarmuligheder</h3><br/>";
-        var RA = svar_Array;
-        console.log("RA: " + RA);
-        // var HTML = "";
-        for (var i in RA) {
-            for (var k in RA[i]) {
-                HTML += RA[i][k] + "<br/>";
-            };
-            HTML += "<br/>";
-        };
-
-        $("#TaTestOutput").html(HTML);
-    </script>
-
-    <style type="text/css">
-        #TaTestOutput{margin-left: auto; margin-right: auto; width: 600px; font-size: 1.2em;}
-    </style>
-
-
     <!-- 
     <script src="../../shared components/shared_functions.js"></script>
  -->
