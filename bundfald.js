@@ -6,7 +6,7 @@ var neg_selected = false;
 
 var pic_Array = ["Nh4plus.jpg", "Naplus.jpg", "Kplus.jpg", "Mg2plus.jpg", "Zn2plus.jpg", "Cu2plus.jpg", "Fe2plus.jpg", "Fe3plus.jpg", "Ca2plus.jpg", "Ba2plus.jpg", "Pb2plus.jpg", "Agplus.jpg"];
 
-var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "Cl<sup>-</sup>", "Br<sup>-</sup>", "<span class='CapitalI'>I</span><sup>-</sup>", "SO<sub>4</sub><sup>2-</sup>", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
+var negative_ioner = ["NO<sub>3</sub><sup>-</sup>", "C<span class='CapitalI'>l</span><sup>-</sup>", "Br<sup>-</sup>", "<span class='CapitalI'>I</span><sup>-</sup>", "SO<sub>4</sub><sup>2-</sup>", "CO<sub>3</sub><sup>2-</sup>", "OH<sup>-</sup>", "S<sup>2-</sup>", "PO<sub>4</sub><sup>3-</sup>"];
 var positive_ioner = ["NH<sub>4</sub><sup>+</sup>", "Na<sup>+</sup>", "K<sup>+</sup>", "Mg<sup>2+</sup>", "Zn<sup>2+</sup>", "Cu<sup>2+</sup>", "Fe<sup>2+</sup>", "Fe<sup>3+</sup>", "Ca<sup>2+</sup>", "Ba<sup>2+</sup>", "Pb<sup>2+</sup>", "Ag<sup>+</sup>"];
 
 //var myLoader = html5Preloader();
@@ -555,7 +555,7 @@ function populate_btns() {
 
     }
 
-    MarkCertainCharactersAsSpecial([".btn-info"], ["I", "l"], ["CapitalI", "small_l"], "#");
+    //MarkCertainCharactersAsSpecial([".btn-info"], ["I", "l"], ["CapitalI", "small_l"], "#");
 
 }
 
