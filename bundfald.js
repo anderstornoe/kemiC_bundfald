@@ -75,7 +75,7 @@ function manipulate_Arrays() {
                     ]);
                     max_score++;
                 }
-                antal_spm = 20;
+                antal_spm = 10;
             }
         }
     }
@@ -85,7 +85,7 @@ function manipulate_Arrays() {
 function change_img(selected) {
     if (opgavetype == 1) {
         $(".btn_pos").off("click");
-        
+
     }
     percent = 0;
     $(".formel_container").fadeOut(0);
@@ -191,12 +191,10 @@ function loadSuccess() {
 
 function poseQuestion() {
 
-
-
     if (runde < antal_spm) {
         //alert ("hej");
         $(".scrub_container").fadeOut(0);
-        $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
@@ -208,7 +206,7 @@ function poseQuestion() {
 
         //console.log("CSPMARRAY: " + c_spmArray);
 
-        var rand_spm = Math.abs(Math.floor(Math.random() * c_spmArray.length-1));
+        var rand_spm = Math.abs(Math.floor(Math.random() * c_spmArray.length - 1));
 
         console.log("rand_spm" + rand_spm);
         c_spmArray.splice(rand_spm, 1);
@@ -247,7 +245,7 @@ function poseQuestion() {
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
 
-                        $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
@@ -299,7 +297,7 @@ function poseQuestion() {
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
-                            $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                            $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
 
 
                         } else {
@@ -367,7 +365,7 @@ function poseQuestion() {
 
                             $(".btn_tjeksvar").click(function() {
 
-                                $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                                $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
 
 
                                 var svar_1 = $(".koeff_1").val();
@@ -393,14 +391,14 @@ function poseQuestion() {
                                 }
                                 console.log("korrekt: " + korrekt);
                                 if (svar_3 == "1") {
-                                     $('input[type=radio]').hide();
+                                    $('input[type=radio]').hide();
                                     korrekt_Array.splice(2, 1, true);
                                     $(".0_rdio").css("opacity", ".3");
                                     $(".0_rdio").each(function(index) {
                                         if ($(this).attr("value") == "0") {
                                             $(this).css("opacity", ".3");
-                                            
-                                            
+
+
                                         }
                                         console.log(index + ": " + $(this).text());
                                     });
@@ -412,7 +410,7 @@ function poseQuestion() {
                                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
 
                                     $(".MsgBox_bgr").click(function() {
-                                        $( "body" ).off("click");
+                                        $("body").off("click");
 
                                         $(".formel_container").fadeOut(1000, function() {
                                             //$(".formel_container").html("");
@@ -434,7 +432,7 @@ function poseQuestion() {
                                     }
                                     fejl++;
 
-                                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
 
                                     UserMsgBox(".inner_container", feedback);
                                 }
@@ -482,7 +480,7 @@ function poseQuestion() {
                 // console.log(reaktions_Array[opg_pos][opg_neg][2]);
                 if ((reaktions_Array[opg_pos][opg_neg][2] == "intet bundfald" && selected == 1) || (reaktions_Array[opg_pos][opg_neg][2] != "intet bundfald" && selected == 0)) {
                     score++;
-                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
@@ -490,6 +488,8 @@ function poseQuestion() {
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
+                       // alert("cliked msg!");
+
                         $(this).fadeOut();
                         poseQuestion();
                         $(".formel_container").fadeOut(500);
@@ -500,7 +500,7 @@ function poseQuestion() {
                 } else {
                     fejl++;
                     UserMsgBox(".inner_container", "Det er ikke rigtigt, prøv igen");
-                    $(".bundfald_score").html("Spørgsmål: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
                 }
             });
 
@@ -509,20 +509,12 @@ function poseQuestion() {
         runde++;
 
     } else {
+        console.log("slutscenarie!");
         $("#UserMsgBox").fadeOut(0);
-        UserMsgBox(".inner_container", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.")
+        UserMsgBox(".inner_container", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
             //Slut feedback og spm: 
-        $("body").click(function() {
-             $( "body" ).off("click");
-            runde = 0;
-            fejl = 0;
-            score = 1;
-            $(".formel_container").fadeOut(0, function() {
-                //$(".formel_container").html("");
-                poseQuestion();
-                $("#UserMsgBox").fadeOut(0);
-
-            });
+        $("#UserMsgBox").click(function() {
+           location.reload();
         });
     }
 }
