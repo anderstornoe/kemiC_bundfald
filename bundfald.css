@@ -172,7 +172,10 @@ sub {
     margin-top: -66px;
     margin-bottom: 20px;
 }
-
+.tabel_vis{
+    width:auto;
+    margin:-20px 0px 10px 0px;
+}
 
 
 .btn_tjeksvar {

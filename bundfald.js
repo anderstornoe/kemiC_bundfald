@@ -31,7 +31,7 @@ var opg_pos;
 var opg_neg;
 
 var max_score = 0;
-var score = 1;
+var score = 0;
 var fejl = 0;
 var antal_spm = 10;
 
