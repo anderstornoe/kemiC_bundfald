@@ -124,6 +124,7 @@ function change_video() {
 
 
 $(document).ready(function() {
+$(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
 
     manipulate_Arrays();
     populate_btns();
@@ -132,7 +133,7 @@ $(document).ready(function() {
     $(".scrub_container").hide();
     $(".loader").hide();
     $(".formel_container").fadeOut(0);
-    $(".img_tabel_bundfald").slideToggle(0);
+    
 
 
     scrubber.draggable({
@@ -406,7 +407,7 @@ function poseQuestion() {
 
                                 if (korrekt_Array.indexOf(false) < 0) {
                                     score++;
-                                    UserMsgBox(".inner_container", "Du har afstemt reaktionsskemaet korrekt.");
+                                    UserMsgBox(".inner_container", "Du har afstemt ion-reaktionsskemaet korrekt.<br/>Klik for for at gå videre.");
                                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
 
                                     $(".MsgBox_bgr").click(function() {
@@ -484,7 +485,7 @@ function poseQuestion() {
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2]);
+                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] +"<br/>Klik her for at gå videre til næste spørgsmål.");
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
