@@ -209,7 +209,7 @@ function poseQuestion() {
 
         //console.log("CSPMARRAY: " + c_spmArray);
 
-        var rand_spm = 10; //Math.abs(Math.floor(Math.random() * c_spmArray.length - 1));
+        var rand_spm = Math.abs(Math.floor(Math.random() * c_spmArray.length - 1));
 
         console.log("rand_spm" + rand_spm);
         c_spmArray.splice(rand_spm, 1);
