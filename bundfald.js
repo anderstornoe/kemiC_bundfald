@@ -37,6 +37,8 @@ var antal_spm = 10;
 
 var runde = 0;
 
+var new_val;
+
 var matrix_Array = [
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 6, 7],
@@ -191,7 +193,7 @@ function loadSuccess() {
 };
 
 function poseQuestion() {
-
+console.log(c_spmArray.length)
     if (runde < antal_spm) {
         //alert ("hej");
         $(".scrub_container").fadeOut(0);
@@ -207,7 +209,7 @@ function poseQuestion() {
 
         //console.log("CSPMARRAY: " + c_spmArray);
 
-        var rand_spm = Math.abs(Math.floor(Math.random() * c_spmArray.length - 1));
+        var rand_spm = new_val; //Math.abs(Math.floor(Math.random() * c_spmArray.length - 1));
 
         console.log("rand_spm" + rand_spm);
         c_spmArray.splice(rand_spm, 1);
