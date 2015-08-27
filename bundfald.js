@@ -197,7 +197,7 @@ function poseQuestion() {
     if (runde < antal_spm) {
         //alert ("hej");
         $(".scrub_container").fadeOut(0);
-        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
@@ -248,7 +248,7 @@ function poseQuestion() {
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
 
-                        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
@@ -300,7 +300,7 @@ function poseQuestion() {
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
-                            $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                            $(".bundfald_score").html("Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/>" + " <span class='QuestionTask'>Fejl: " + fejl + "</span>");
 
 
                         } else {
@@ -368,7 +368,7 @@ function poseQuestion() {
 
                             $(".btn_tjeksvar").click(function() {
 
-                                $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                                $(".bundfald_score").html("Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/>" + " Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
 
                                 var svar_1 = $(".koeff_1").val();
@@ -435,7 +435,7 @@ function poseQuestion() {
                                     }
                                     fejl++;
 
-                                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
                                     UserMsgBox(".inner_container", feedback);
                                 }
@@ -483,7 +483,7 @@ function poseQuestion() {
                 // console.log(reaktions_Array[opg_pos][opg_neg][2]);
                 if ((reaktions_Array[opg_pos][opg_neg][2] == "intet bundfald" && selected == 1) || (reaktions_Array[opg_pos][opg_neg][2] != "intet bundfald" && selected == 0)) {
                     score++;
-                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
@@ -503,7 +503,7 @@ function poseQuestion() {
                 } else {
                     fejl++;
                     UserMsgBox(".inner_container", "Det er ikke rigtigt, prøv igen");
-                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                 }
             });
 
