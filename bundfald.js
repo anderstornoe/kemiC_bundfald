@@ -37,8 +37,6 @@ var antal_spm = 10;
 
 var runde = 0;
 
-var new_val;
-
 var matrix_Array = [
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 1, 1],
     [1, 1, 1, 1, 1, 2, 3, 4, 1, 1, 6, 7],
@@ -126,7 +124,9 @@ function change_video() {
 
 
 $(document).ready(function() {
-$(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
+
+
+    $(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
 
     manipulate_Arrays();
     populate_btns();
@@ -135,7 +135,7 @@ $(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
     $(".scrub_container").hide();
     $(".loader").hide();
     $(".formel_container").fadeOut(0);
-    
+
 
 
     scrubber.draggable({
@@ -193,11 +193,11 @@ function loadSuccess() {
 };
 
 function poseQuestion() {
-console.log(c_spmArray.length)
+
     if (runde < antal_spm) {
         //alert ("hej");
         $(".scrub_container").fadeOut(0);
-        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
@@ -248,7 +248,7 @@ console.log(c_spmArray.length)
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
 
-                        $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
@@ -300,7 +300,7 @@ console.log(c_spmArray.length)
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
-                            $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                            $(".bundfald_score").html("Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/>" + " <span class='QuestionTask'>Fejl: " + fejl + "</span>");
 
 
                         } else {
@@ -361,6 +361,14 @@ console.log(c_spmArray.length)
                             $(".resultat_container").html(resultat_interaktion); //reaktions_Array[pos_selected][neg_selected][1]);
 
                             $('.radio_cont').shuffle_div_position();
+                            $(".radio_text").click(function() {
+                                console.log($(".radio_cont").length);
+                                var indeks = $(this).parent().index() / 2;
+
+                                console.log(indeks);
+                                //$(".radio_cont").eq(indeks).css("color", "red");
+                                $(".radio_btn").eq(indeks).prop('checked',true);
+                            });
 
                             //// 
 
@@ -368,7 +376,7 @@ console.log(c_spmArray.length)
 
                             $(".btn_tjeksvar").click(function() {
 
-                                $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                                $(".bundfald_score").html("Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/>" + " Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
 
                                 var svar_1 = $(".koeff_1").val();
@@ -435,7 +443,7 @@ console.log(c_spmArray.length)
                                     }
                                     fejl++;
 
-                                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
                                     UserMsgBox(".inner_container", feedback);
                                 }
@@ -483,15 +491,15 @@ console.log(c_spmArray.length)
                 // console.log(reaktions_Array[opg_pos][opg_neg][2]);
                 if ((reaktions_Array[opg_pos][opg_neg][2] == "intet bundfald" && selected == 1) || (reaktions_Array[opg_pos][opg_neg][2] != "intet bundfald" && selected == 0)) {
                     score++;
-                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] +"<br/>Klik her for at gå videre til næste spørgsmål.");
+                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik her for at gå videre til næste spørgsmål.");
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
-                       // alert("cliked msg!");
+                        // alert("cliked msg!");
 
                         $(this).fadeOut();
                         poseQuestion();
@@ -503,7 +511,7 @@ console.log(c_spmArray.length)
                 } else {
                     fejl++;
                     UserMsgBox(".inner_container", "Det er ikke rigtigt, prøv igen");
-                    $(".bundfald_score").html("<span class='QuestionTask'> Spørgsmål: " + score + "/" + antal_spm + "<br/> Score: " + score + " Fejl: " + fejl + "</span>");
+                    $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                 }
             });
 
@@ -517,9 +525,11 @@ console.log(c_spmArray.length)
         UserMsgBox(".inner_container", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
             //Slut feedback og spm: 
         $("#UserMsgBox").click(function() {
-           location.reload();
+            location.reload();
         });
     }
+
+
 }
 
 //
