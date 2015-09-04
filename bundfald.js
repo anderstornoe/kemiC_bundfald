@@ -126,7 +126,7 @@ function change_video() {
 $(document).ready(function() {
 
 
-$(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
+    $(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
 
     manipulate_Arrays();
     populate_btns();
@@ -135,7 +135,7 @@ $(".img_tabel_bundfald").slideToggle(0).css("opacity", "1");
     $(".scrub_container").hide();
     $(".loader").hide();
     $(".formel_container").fadeOut(0);
-    
+
 
 
     scrubber.draggable({
@@ -361,6 +361,14 @@ function poseQuestion() {
                             $(".resultat_container").html(resultat_interaktion); //reaktions_Array[pos_selected][neg_selected][1]);
 
                             $('.radio_cont').shuffle_div_position();
+                            $(".radio_text").click(function() {
+                                console.log($(".radio_cont").length);
+                                var indeks = $(this).parent().index() / 2;
+
+                                console.log(indeks);
+                                //$(".radio_cont").eq(indeks).css("color", "red");
+                                $(".radio_btn").eq(indeks).prop('checked',true);
+                            });
 
                             //// 
 
@@ -487,11 +495,11 @@ function poseQuestion() {
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] +"<br/>Klik her for at gå videre til næste spørgsmål.");
+                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik her for at gå videre til næste spørgsmål.");
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
-                       // alert("cliked msg!");
+                        // alert("cliked msg!");
 
                         $(this).fadeOut();
                         poseQuestion();
@@ -517,9 +525,11 @@ function poseQuestion() {
         UserMsgBox(".inner_container", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
             //Slut feedback og spm: 
         $("#UserMsgBox").click(function() {
-           location.reload();
+            location.reload();
         });
     }
+
+
 }
 
 //

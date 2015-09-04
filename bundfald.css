@@ -125,6 +125,14 @@ sub {
     width: 41%;
 }
 
+.radio_cont{
+    cursor:pointer;
+}
+
+.radio_cont:hover{
+    color:#1da6db;
+}
+
 .resultat_container {
     float: left;
     margin-left: 1%;
