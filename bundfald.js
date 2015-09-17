@@ -248,7 +248,7 @@ function poseQuestion() {
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
 
-                        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
+                        $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span> <br/>Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
