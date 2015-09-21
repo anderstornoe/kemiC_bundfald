@@ -610,12 +610,14 @@ $(document).mousemove(function(e) {
       
         var playpos = video.duration * (divPos.left / video.width);
         $("#video").currentTime = playpos;
-        scrubber.css("margin-left", playpos + "px")
+        scrubber.css("margin-left", playpos + "px");
+        console.log(divPos); 
     }*/
 
     divPos = {
         left: e.pageX - offset.left
     };
+   
 });
 
 
