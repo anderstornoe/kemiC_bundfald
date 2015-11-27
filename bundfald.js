@@ -243,7 +243,7 @@ function poseQuestion() {
                 //Hvis det er en øve opgave: 
                 if (opgavetype == 1) {
                     if (pos_selected != opg_pos) {
-                        UserMsgBox(".inner_container", "Du har ikke valgt den rigtige positive ion");
+                        UserMsgBox("body", "Du har ikke valgt den rigtige positive ion");
                         pos_selected = false;
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
@@ -267,7 +267,7 @@ function poseQuestion() {
                 $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
 
                 if (pos_selected === false) {
-                    UserMsgBox(".inner_container", "Vælg først en positiv ion.")
+                    UserMsgBox("body", "Vælg først en positiv ion.")
                 } else {
                     $(this).addClass("btn-primary").removeClass("btn-info");
                     neg_selected = parseInt($(this).attr("neg_id"));
@@ -284,7 +284,7 @@ function poseQuestion() {
                         // Hvis opgavetypen er '1' -> kør opgaven med interaktion / øvelse c eller d : 
 
                         if (reaktions_Array[pos_selected][neg_selected][2] == "no_show") {
-                            UserMsgBox(".inner_container", "Denne kombination giver en reaktion, men ikke den forventede fældningsreaktion.");
+                            UserMsgBox("body", "Denne kombination giver en reaktion, men ikke den forventede fældningsreaktion.");
                         } else {
                             change_video();
                         }
@@ -296,7 +296,7 @@ function poseQuestion() {
                         var korrekt_Array = [false, false, false];
 
                         if (neg_selected != opg_neg) {
-                            UserMsgBox(".inner_container", "Du har ikke valgt den rigtige negative ion");
+                            UserMsgBox("body", "Du har ikke valgt den rigtige negative ion");
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
@@ -306,7 +306,7 @@ function poseQuestion() {
                         } else {
 
                             change_video();
-                            //UserMsgBox(".inner_container", "Du har valgt de rigtige ioner. <br/>Afstem reaktionen herunder");
+                            //UserMsgBox("body", "Du har valgt de rigtige ioner. <br/>Afstem reaktionen herunder");
                             //$(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)")
                             var correctkoeff_1 = "1";
                             var correctkoeff_2 = "1";
@@ -417,7 +417,7 @@ function poseQuestion() {
 
                                 if (korrekt_Array.indexOf(false) < 0) {
                                     score++;
-                                    UserMsgBox(".inner_container", "Du har afstemt ion-reaktionsskemaet korrekt.<br/>Klik for for at gå videre.");
+                                    UserMsgBox("body", "Du har afstemt ion-reaktionsskemaet korrekt.<br/>Klik for for at gå videre.");
                                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
 
                                     $(".MsgBox_bgr").click(function() {
@@ -445,7 +445,7 @@ function poseQuestion() {
 
                                     $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
-                                    UserMsgBox(".inner_container", feedback);
+                                    UserMsgBox("body", feedback);
                                 }
 
 
@@ -495,7 +495,7 @@ function poseQuestion() {
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    UserMsgBox(".inner_container", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik her for at gå videre til næste spørgsmål.");
+                    UserMsgBox("body", "<b>Korrekt</b><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik her for at gå videre til næste spørgsmål.");
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
                     $(".MsgBox_bgr").click(function() {
@@ -510,7 +510,7 @@ function poseQuestion() {
                     console.log("run me once");
                 } else {
                     fejl++;
-                    UserMsgBox(".inner_container", "Det er ikke rigtigt, prøv igen");
+                    UserMsgBox("body", "Det er ikke rigtigt, prøv igen");
                     $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                 }
             });
@@ -522,7 +522,7 @@ function poseQuestion() {
     } else {
         console.log("slutscenarie!");
         $("#UserMsgBox").fadeOut(0);
-        UserMsgBox(".inner_container", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
+        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
             //Slut feedback og spm: 
         $("#UserMsgBox").click(function() {
             location.reload();
