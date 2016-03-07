@@ -221,3 +221,8 @@ sub {
     text-align: center;
     padding: 2%
 }
+
+.TaskNumberImg {
+    width: 20px;
+    height: 20px;
+}
