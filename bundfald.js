@@ -257,6 +257,7 @@ function poseQuestion() {
                     }
                 } else if (opgavetype == 0) {
                     change_img($(this));
+                     $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                 }
 
             });
