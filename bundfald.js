@@ -201,7 +201,6 @@ function poseQuestion() {
 
         $(".btn_pos, .btn_neg").removeClass("btn-primary").addClass("btn-info");
 
-
         $(".vid_container").fadeOut(0);
         $(".img_container").fadeIn(300);
 
@@ -217,23 +216,37 @@ function poseQuestion() {
         opg_pos = c_spmArray[rand_spm][0];
         opg_neg = c_spmArray[rand_spm][1];
 
-        //Opdatér spørgsmålet i toppen, der! 
+        //Opdatér spørgsmålet i toppen: 
 
-        $("h4").fadeOut(50, function() {
 
-            // Lav opgave formuleringen om
-            if (underopgave == "c_1") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
-            } else if (underopgave == "c_2") {
-                $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+/*===================================
+=            Opgavetype 'Afstem reaktionsskema '            =
+===================================*/
 
-            } else if (underopgave == "d") {
-                $("h4").html("Vælg de ioner der danner bundfaldet <span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span>. <br/>Afstem reaktionen.");
-            }
-            $("h4").fadeIn(2000)
-        });
+
 
         if (opgavetype < 2) {
+
+        	if (opgavetype == 0 ){
+        		microhint($(".positiv_container"), "Du skal starte med at vælge en positiv ion");
+        	}
+
+            
+
+                // Lav opgave formuleringen om
+                if (underopgave == "c_1") {
+                    microhint($(".positiv_container"), "Vælg først ionen " + positive_ioner[opg_pos]);
+                    $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                } else if (underopgave == "c_2") {
+                    $("h4").html("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt.");
+                    microhint($(".positiv_container"), "Vælg først ionen " + p_ioner_navne[opg_pos]);
+
+                } else if (underopgave == "d") {
+                    $("h4").html("Vælg de ioner der danner bundfaldet <span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span>. <br/>Afstem reaktionen.");
+                microhint($(".positiv_container"), "Vælg først ionen der indgår i " + reaktions_Array[opg_pos][opg_neg][2]);
+                }
+                $("h4").fadeIn(2000)
+            
 
             $(".btn_pos").click(function() {
                 //UserMsgBox(".container-fluid", "Hurra - korrekt svar!");
@@ -243,7 +256,7 @@ function poseQuestion() {
                 //Hvis det er en øve opgave: 
                 if (opgavetype == 1) {
                     if (pos_selected != opg_pos) {
-                        UserMsgBox("body", "Du har ikke valgt den rigtige positive ion");
+                        microhint($(".positiv_container"), "Du har ikke valgt den rigtige positive ion");
                         pos_selected = false;
                         $(".btn_pos").removeClass("btn-primary").addClass("btn-info");
                         fejl++;
@@ -252,12 +265,14 @@ function poseQuestion() {
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
+                    	microhint($(".negativ_container"), "Vælg derefter den rigtige negative ion");
                         change_img($(this));
 
                     }
                 } else if (opgavetype == 0) {
                     change_img($(this));
-                     $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
+                    $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
+                    microhint($(".negativ_container"), "Vælg derefter en negativ ion");
                 }
 
             });
@@ -268,7 +283,7 @@ function poseQuestion() {
                 $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
 
                 if (pos_selected === false) {
-                    UserMsgBox("body", "Vælg først en positiv ion.")
+                    microhint($(".negativ_container"), "Vælg først en positiv ion.")
                 } else {
                     $(this).addClass("btn-primary").removeClass("btn-info");
                     neg_selected = parseInt($(this).attr("neg_id"));
@@ -297,7 +312,7 @@ function poseQuestion() {
                         var korrekt_Array = [false, false, false];
 
                         if (neg_selected != opg_neg) {
-                            UserMsgBox("body", "Du har ikke valgt den rigtige negative ion");
+                            microhint($(".negativ_container"), "Du har ikke valgt den rigtige negative ion");
                             neg_selected = false;
                             $(".btn_neg").removeClass("btn-primary").addClass("btn-info");
                             fejl++;
@@ -305,6 +320,8 @@ function poseQuestion() {
 
 
                         } else {
+
+
 
                             change_video();
                             //UserMsgBox("body", "Du har valgt de rigtige ioner. <br/>Afstem reaktionen herunder");
@@ -361,6 +378,8 @@ function poseQuestion() {
 
                             $(".resultat_container").html(resultat_interaktion); //reaktions_Array[pos_selected][neg_selected][1]);
 
+							microhint($(".reaktions_container"), "Afstem reaktionsskemaet");
+
                             $('.radio_cont').shuffle_div_position();
                             $(".radio_text").click(function() {
                                 console.log($(".radio_cont").length);
@@ -368,7 +387,7 @@ function poseQuestion() {
 
                                 console.log(indeks);
                                 //$(".radio_cont").eq(indeks).css("color", "red");
-                                $(".radio_btn").eq(indeks).prop('checked',true);
+                                $(".radio_btn").eq(indeks).prop('checked', true);
                             });
 
                             //// 
@@ -446,10 +465,10 @@ function poseQuestion() {
 
                                     $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
 
-                                    UserMsgBox("body", feedback);
+                                    microhint($(".pil_container"), feedback);
                                 }
 
-
+								
                                 console.log("korrekt: " + korrekt_Array);
                             });
                         }
@@ -468,6 +487,8 @@ function poseQuestion() {
                 video.addEventListener("canplaythrough", loadSuccess);
                 $(".formel_container").css("opacity", 0);*/
             });
+
+	 /*=====  End of Opgavetype 'Afstem reaktionsskema '  ======*/
 
             /// Hvis det er opgave 2 --> ingen knap listeners..
         } else if (opgavetype == 2) {
@@ -529,8 +550,6 @@ function poseQuestion() {
             location.reload();
         });
     }
-
-
 }
 
 //
@@ -618,7 +637,7 @@ $(document).mousemove(function(e) {
     divPos = {
         left: e.pageX - offset.left
     };
-   
+
 });
 
 
