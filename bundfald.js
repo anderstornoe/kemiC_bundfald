@@ -219,34 +219,36 @@ function poseQuestion() {
         //Opdatér spørgsmålet i toppen: 
 
 
-/*===================================
-=            Opgavetype 'Afstem reaktionsskema '            =
-===================================*/
+        /*===================================
+        =            Opgavetype 'Afstem reaktionsskema '            =
+        ===================================*/
 
 
+        console.log("ps_contiamner: " + $(".positiv_container").height());
 
         if (opgavetype < 2) {
 
-        	if (opgavetype == 0 ){
-        		microhint($(".positiv_container"), "Du skal starte med at vælge en positiv ion");
-        	}
+            if (opgavetype == 0) {
+                microhint($(".positiv_container"), "Undersøg hvad der sker når du blader to ioner. <br>Du skal starte med at vælge en positiv ion");
+            }
 
-            
 
-                // Lav opgave formuleringen om
-                if (underopgave == "c_1") {
-                    microhint($(".positiv_container"), "Vælg først ionen " + positive_ioner[opg_pos]);
-                    $(".instruction").html(instruction("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt."));
-                } else if (underopgave == "c_2") {
-                    $(".instruction").html(instruction("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt."));
-                    microhint($(".positiv_container"), "Vælg først ionen " + p_ioner_navne[opg_pos]);
 
-                } else if (underopgave == "d") {
-                    $(".instruction").html(instruction("Vælg de ioner der danner bundfaldet <span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span>. <br/>Afstem reaktionen."));
+            // Lav opgave formuleringen om
+            if (underopgave == "c_1") {
+
+                $(".instruction").html(instruction("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt."));
+                microhint($(".positiv_container"), "Vælg først ionen " + positive_ioner[opg_pos] + " <br/>(" + p_ioner_navne[opg_pos] + ")");
+            } else if (underopgave == "c_2") {
+                $(".instruction").html(instruction("Se hvad der sker når man blander ionerne: <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> <br/>Afstem reaktionen og vælg det rigtige produkt."));
+                microhint($(".positiv_container"), "Vælg først ionen " + p_ioner_navne[opg_pos]);
+
+            } else if (underopgave == "d") {
+                $(".instruction").html(instruction("Vælg de ioner der danner bundfaldet <span class='QuestionTask'>" + reaktions_Array[opg_pos][opg_neg][2] + "</span>. <br/>Afstem reaktionen."));
                 microhint($(".positiv_container"), "Vælg først ionen der indgår i " + reaktions_Array[opg_pos][opg_neg][2]);
-                }
-                $("h4").fadeIn(2000)
-            
+            }
+            $("h4").fadeIn(2000)
+
 
             $(".btn_pos").click(function() {
                 //UserMsgBox(".container-fluid", "Hurra - korrekt svar!");
@@ -265,7 +267,18 @@ function poseQuestion() {
                     } else {
                         //alert("hej");
                         //$(this).removeClass("btn-info").addClass("btn-primary");
-                    	microhint($(".negativ_container"), "Vælg derefter den rigtige negative ion");
+                        if (underopgave == "c_1") {
+
+                            microhint($(".negativ_container"), "Vælg ionen " + negative_ioner[opg_neg] + " <br/>(" + n_ioner_navne[opg_neg] + ")");
+                        } else if (underopgave == "c_2") {
+
+                            microhint($(".negativ_container"), "Vælg ionen " + n_ioner_navne[opg_neg]);
+
+                        } else if (underopgave == "d") {
+
+                            microhint($(".negativ_container"), "Vælg nu den negative ion, der indgår i " + reaktions_Array[opg_pos][opg_neg][2]);
+                        }
+
                         change_img($(this));
 
                     }
@@ -293,15 +306,17 @@ function poseQuestion() {
 
                     if (opgavetype == 0) {
                         console.log("fademeIN")
-                            // Tjek det første led af reaktionen: 
+
+                        // Tjek det første led af reaktionen: 
                         $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                         $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
                         $(".formel_container").fadeIn(300);
                         // Hvis opgavetypen er '1' -> kør opgaven med interaktion / øvelse c eller d : 
 
                         if (reaktions_Array[pos_selected][neg_selected][2] == "no_show") {
-                            UserMsgBox("body", "Denne kombination giver en reaktion, men ikke den forventede fældningsreaktion.");
+                            microhint($(".pil_container"), "Denne kombination giver en reaktion, men ikke den forventede fældningsreaktion.");
                         } else {
+                            microhint($(".resultat_container"), "Du kan nu se om der dannes bundfald eller ej.</br>(s) efter resultatet står for 'solid', altså bundfald.<br>(aq) står for 'aqueous solution' og betyder at der ikke er bundfald.");
                             change_video();
                         }
 
@@ -378,7 +393,7 @@ function poseQuestion() {
 
                             $(".resultat_container").html(resultat_interaktion); //reaktions_Array[pos_selected][neg_selected][1]);
 
-							microhint($(".reaktions_container"), "Afstem reaktionsskemaet");
+                            microhint($(".reaktions_container"), "Afstem reaktionsskemaet");
 
                             $('.radio_cont').shuffle_div_position();
                             $(".radio_text").click(function() {
@@ -437,17 +452,20 @@ function poseQuestion() {
 
                                 if (korrekt_Array.indexOf(false) < 0) {
                                     score++;
-                                    microhint($(".reaktions_container"), "<div class='microhint_label_success'>Korrekt</div><br/>Du har afstemt ion-reaktionsskemaet korrekt.<br/>Klik på knappen for at gå videre til næste spørgsmål.<br><div class='btn btn-primary btn_next'>Næste</div>");
-                                    $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.1)");
+                                    microhint($(".reaktions_container"), "<div class='microhint_label_success'>Korrekt</div><br/>Du har afstemt ion-reaktionsskemaet korrekt.<br/>Klik på knappen for at gå videre til næste spørgsmål.");
+                                    
+                                    
+$(".btn_next").fadeIn(100); 
+									
+                                    $(".btn_next").click(function() {
 
-                                    $(".microhint").click(function() {
-                                        $("body").off("click");
+                                    	$(".btn_next").fadeOut(100);
 
-                                        $(".microhint").fadeOut(1000, function() {
-                                            //$(".formel_container").html("");
+                                        
+                                            $(".formel_container").fadeOut(200);
                                             poseQuestion();
 
-                                        });
+                                 
                                     });
 
                                 } else {
@@ -468,7 +486,7 @@ function poseQuestion() {
                                     microhint($(".pil_container"), feedback);
                                 }
 
-								
+
                                 console.log("korrekt: " + korrekt_Array);
                             });
                         }
@@ -488,7 +506,7 @@ function poseQuestion() {
                 $(".formel_container").css("opacity", 0);*/
             });
 
-	 /*=====  End of Opgavetype 'Afstem reaktionsskema '  ======*/
+            /*=====  End of Opgavetype 'Afstem reaktionsskema '  ======*/
 
             /// Hvis det er opgave 2 --> ingen knap listeners..
         } else if (opgavetype == 2) {
@@ -497,12 +515,12 @@ function poseQuestion() {
             console.log(opg_pos + ";" + opg_neg);
             pos_selected = opg_pos;
             neg_selected = opg_neg;
-        if (underopgave == "a") {
+            if (underopgave == "a") {
                 $(".instruction").html(instruction("Dannes der bundfald, når man blander ionerne <span class='QuestionTask'>" + positive_ioner[opg_pos] + "</span> og <span class='QuestionTask'>" + negative_ioner[opg_neg] + "</span> ? <br/> Brug tabellen til at forudsige om der dannes bundfald."));
-             microhint($(".tabel_toggle"),"Brug tabellen til at forudse om der dannes bundfald, når du blander ionerne " + positive_ioner[opg_pos] + " og " + negative_ioner[opg_neg]);
+                microhint($(".tabel_toggle"), "Brug tabellen til at forudse om der dannes bundfald, når du blander ionerne " + positive_ioner[opg_pos] + " og " + negative_ioner[opg_neg]);
             } else if (underopgave == "b") {
                 $(".instruction").html(instruction("Dannes der bundfald, når man blander <span class='QuestionTask'>" + p_ioner_navne[opg_pos] + "</span> og <span class='QuestionTask'>" + n_ioner_navne[opg_neg] + "</span> ? <br/> Brug tabellen til at forudsige om der dannes bundfald."));
-            microhint($(".tabel_toggle"),"Brug tabellen til at forudse om der dannes bundfald, når du blander ionerne " + p_ioner_navne[opg_pos] + " og " + n_ioner_navne[opg_neg]);
+                microhint($(".tabel_toggle"), "Brug tabellen til at forudse om der dannes bundfald, når du blander ionerne " + p_ioner_navne[opg_pos] + " og " + n_ioner_navne[opg_neg]);
             }
 
             $(".positiv_container").html("<br/><br/><br/><br/><br/><br/><br/><div class='btn btn-primary btn_ja' value='0'> JA </div>");
@@ -519,13 +537,17 @@ function poseQuestion() {
                     change_video();
                     $(".reaktions_container").html(reaktions_Array[pos_selected][neg_selected][0]);
                     $(".resultat_container").html(reaktions_Array[pos_selected][neg_selected][1]);
-                    microhint($(".reaktions_container"), "<div class='microhint_label_success'>Korrekt</div><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik på knappen for at gå videre til næste spørgsmål.<br><div class='btn btn-primary btn_next'>Næste</div>");
+                    microhint($(".reaktions_container"), "<div class='microhint_label_success'>Korrekt</div><br/> Ved denne proces dannes der " + reaktions_Array[opg_pos][opg_neg][2] + "<br/>Klik på knappen for at gå videre til næste spørgsmål.<br>");
                     $(".MsgBox_bgr").css("background-color", "rgba(0,0,0,0.01)");
                     $(".btn_ja, .btn_nej").fadeOut(500);
+
+$(".btn_next").fadeIn(100);
+
                     $(".btn_next").click(function() {
                         // alert("cliked msg!");
+                        $(".btn_next").fadeOut(100);
 
-                        $(this).fadeOut();
+                        //$().fadeOut();
                         poseQuestion();
                         $(".formel_container").fadeOut(500);
                     });
@@ -534,7 +556,12 @@ function poseQuestion() {
                     console.log("run me once");
                 } else {
                     fejl++;
-                    microhint($(".front_container"), "<div class='microhint_label_danger'>Forkert</div> Det er ikke rigtigt, prøv igen");
+
+                    if ($(this).hasClass("btn_ja")) {
+                        microhint($(".front_container"), "<div class='microhint_label_danger'>Forkert</div> Der dannes ikke bundfald. Slå op i tabellen for at se resultatet af de forskellige blandinger.");
+                    } else if ($(this).hasClass("btn_nej")) {
+                        microhint($(".front_container"), "<div class='microhint_label_danger'>Forkert</div> Der dannes bundfald. Slå op i tabellen for at se resultatet af de forskellige blandinger");
+                    }
                     $(".bundfald_score").html(" Korrekte svar: <span class='QuestionTask'>" + score + "/" + antal_spm + "</span><br/> Fejl: <span class='QuestionTask'>" + fejl + "</span>");
                 }
             });
@@ -546,7 +573,7 @@ function poseQuestion() {
     } else {
         console.log("slutscenarie!");
         $("#UserMsgBox").fadeOut(0);
-        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og tag 10 opgaver mere.")
+        UserMsgBox("body", "<span class='feedbackbox_txtstyle_overskrift'>Flot</span><br/>Du har lavet 10 opgaver korrekt. <br/> Du havde " + fejl + " fejl undervejs.<br/>Klik og løs 10 opgaver mere.")
             //Slut feedback og spm: 
         $("#UserMsgBox").click(function() {
             location.reload();
@@ -589,6 +616,9 @@ function populate_btns() {
         $(".positiv_container").append("<div class='btn  btn-info btn_pos' pos_id='" + i + "''>" + positive_ioner[i] + "</div>");
 
     }
+
+    $(".inner_container").append("<div class='btn btn-primary btn_next'>Næste opgave</div>"); 
+    $(".btn_next").fadeOut(0);
 
     //MarkCertainCharactersAsSpecial([".btn-info"], ["I", "l"], ["CapitalI", "small_l"], "#");
 
