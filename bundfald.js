@@ -205,6 +205,7 @@ function loadSuccess() {
 function poseQuestion() {
 
 	$(".microhint").remove();
+	$(".btn_tjeksvar").fadeOut(100);
 
     if (runde < antal_spm) {
         //alert ("hej");
@@ -470,6 +471,7 @@ function poseQuestion() {
 
 
                                     $(".btn_next").fadeIn(100);
+                                    $(".btn_tjeksvar").fadeOut(100)
 
 
 
@@ -549,6 +551,7 @@ function poseQuestion() {
                     $(".btn_ja, .btn_nej").fadeOut(500);
 
                     $(".btn_next").fadeIn(100);
+                    $(".btn_tjeksvar").fadeOut(100);
 
 
 
