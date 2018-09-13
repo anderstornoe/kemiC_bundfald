@@ -227,8 +227,10 @@ sub {
     height: 20px;
 }
 
-.microhint {
+.microhint, .triangle {
+    text-shadow: 0px 0px 0px #999;
     box-shadow: 0px 0px 0px #999;
+
 }
 
 .btn_next {
